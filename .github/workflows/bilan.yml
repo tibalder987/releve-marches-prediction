@@ -1,0 +1,24 @@
+name: bilan
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 5 * * *'
+concurrency:
+  group: bilan
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  bilan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bilan du releve
+        run: |
+          git config user.name "releve-bot"
+          git config user.email "releve-bot@users.noreply.github.com"
+          mkdir -p status
+          python3 polymarket_live.py settle --dir data > status/bilan.txt 2>&1 || true
+          git add -A status && git commit -q -m "bilan $(date -u +%FT%TZ)" || true
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
