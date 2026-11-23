@@ -1,8 +1,8 @@
 {
  "http": {
-  "200": 1833,
+  "200": 1892,
   "429": 6,
-  "404": 538
+  "404": 481
  },
  "erreurs": [],
  "exemples": {
@@ -42,52 +42,52 @@
    "trading_active": true
   },
   "historical_cutoff": {
-   "market_positions_last_updated_ts": "2026-09-22T00:00:00Z",
-   "market_settled_ts": "2026-09-22T00:00:00Z",
-   "orders_updated_ts": "2026-11-07T00:00:00Z",
-   "trades_created_ts": "2026-09-22T00:00:00Z"
+   "market_positions_last_updated_ts": "2026-09-24T00:00:00Z",
+   "market_settled_ts": "2026-09-24T00:00:00Z",
+   "orders_updated_ts": "2026-11-09T00:00:00Z",
+   "trades_created_ts": "2026-09-24T00:00:00Z"
   },
   "chandelier": {
-   "end_period_ts": 1788908400,
-   "open_interest": "7559205.52",
+   "end_period_ts": 1788501600,
+   "open_interest": "5132596.26",
    "price": {
-    "close": "0.7700",
-    "high": "0.7700",
-    "low": "0.1100",
-    "mean": "0.4645",
-    "open": "0.6000",
-    "previous": "0.5900"
+    "close": "0.0900",
+    "high": "0.4500",
+    "low": "0.0200",
+    "mean": "0.2221",
+    "open": "0.0700",
+    "previous": "0.0800"
    },
-   "volume": "5717122.13",
+   "volume": "5169782.15",
    "yes_ask": {
-    "close": "0.7700",
-    "high": "0.7700",
-    "low": "0.1400",
-    "open": "0.6000"
+    "close": "0.1000",
+    "high": "0.4500",
+    "low": "0.0300",
+    "open": "0.0700"
    },
    "yes_bid": {
-    "close": "0.6800",
-    "high": "0.7400",
-    "low": "0.1100",
-    "open": "0.5900"
+    "close": "0.0900",
+    "high": "0.4400",
+    "low": "0.0200",
+    "open": "0.0600"
    }
   }
  },
  "phase": "chandeliers",
- "maj": "2026-11-23T10:10:54.273655+00:00",
+ "maj": "2026-11-23T10:30:37.542642+00:00",
  "base": "https://api.elections.kalshi.com/trade-api/v2",
  "jours_faits": 183,
  "jours_total": 183,
  "marches_listes": 7523935,
  "marches_retenus": 641460,
  "historique": {
-  "n": 1689000,
-  "k": 89131,
+  "n": 1973000,
+  "k": 103924,
   "fin": null,
-  "min_close": 1788184800,
-  "max_close": 1789394400,
+  "min_close": 1787862349,
+  "max_close": 1788388418,
   "echecs": null
  },
- "traites": 3802,
- "restants": 370372
+ "traites": 4847,
+ "restants": 385776
 }
