@@ -163,42 +163,69 @@ def page_rows(ms):
 
 
 def list_day(day0, st, left, sink):
-    """Avance la liste d'un jour, page par page, tant qu'il reste du temps. st = état repris d'un passage à l'autre."""
+    """Avance la liste d'un jour (marchés récents), page par page, tant qu'il reste du temps."""
+    if st.get("ep"):  # ancien repli vers l'historique : abandonné
+        st["fin"] = True
+        return
     while left() > 25 and not st.get("fin"):
         p = VARIANTS[VARIANT[0]](day0)
         if st.get("cur"):
             p["cursor"] = st["cur"]
-        j = get(st.get("ep") or "/markets", p)
+        j = get("/markets", p)
         if not j:
-            if not st.get("n") and not st.get("ep") and not st.get("cur"):
-                st["ep"] = "/historical/markets"  # un jour vide ou refusé : on essaie l'historique une fois
-                continue
             st["echecs"] = st.get("echecs", 0) + 1
-            if st["echecs"] >= 3 and st.get("ep") == "/historical/markets" and not st.get("n"):
-                st["fin"] = True  # rien à lire pour ce jour
+            if st["echecs"] >= 6:
+                st["fin"] = True
             return
         ms = j.get("markets", [])
         if ms and "marche" not in STATUS["exemples"]:
             STATUS["exemples"]["marche"] = {k: ms[0][k] for k in list(ms[0])[:60]}
+        st["n"] = st.get("n", 0) + len(ms)
+        st["k"] = st.get("k", 0) + sink(page_rows(ms))
+        st["cur"] = j.get("cursor") or None
+        if not st["cur"] or not ms:
+            st["fin"] = True
+
+
+def list_hist(st, t0, left, sink):
+    """Marchés archivés : pas de filtre de date, on tourne les pages dans l'ordre de l'API (une seule
+    file) jusqu'à 30 pages de suite entièrement antérieures à la période."""
+    while left() > 25 and not st.get("fin"):
+        p = {"limit": 1000, "mve_filter": "exclude"}
+        if st.get("cur"):
+            p["cursor"] = st["cur"]
+        j = get("/historical/markets", p)
+        if not j:
+            st["echecs"] = st.get("echecs", 0) + 1
+            if st["echecs"] >= 30:
+                st["fin"] = True
+            time.sleep(2)
+            continue
+        ms = j.get("markets", [])
         rows = page_rows(ms)
         st["n"] = st.get("n", 0) + len(ms)
         st["k"] = st.get("k", 0) + sink(rows)
+        closes = [r[2] for r in rows if r[2]]
+        if closes:
+            st["min_close"], st["max_close"] = min(closes), max(closes)
+            st["vieilles"] = st.get("vieilles", 0) + 1 if max(closes) < t0 else 0
         st["cur"] = j.get("cursor") or None
-        if not st["cur"] or not ms:
-            if not st["n"] and not st.get("ep"):
-                st["ep"] = "/historical/markets"
-                continue
+        if not st["cur"] or not ms or st.get("vieilles", 0) >= 30:
             st["fin"] = True
+
+
+CUTOFF = [0]
 
 
 def candles(ticker, series, close):
     p = {"start_ts": close - 7 * 86400, "end_ts": close, "period_interval": 60}
-    c = get(f"/series/{series}/markets/{ticker}/candlesticks", p)
-    src = "live"
-    if not c or not c.get("candlesticks"):
-        h = get(f"/historical/markets/{ticker}/candlesticks", p)
-        if h and h.get("candlesticks"):
-            c, src = h, "hist"
+    order = ("hist", "live") if close < CUTOFF[0] - 86400 else ("live", "hist")
+    c, src = None, order[0]
+    for src in order:
+        path = f"/historical/markets/{ticker}/candlesticks" if src == "hist" else f"/series/{series}/markets/{ticker}/candlesticks"
+        c = get(path, p, tries=3)
+        if c and c.get("candlesticks"):
+            break
     return c, src
 
 
@@ -300,7 +327,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--start", default="2026-05-20")
     ap.add_argument("--end", default="2026-11-19")
-    ap.add_argument("--min-vol", type=float, default=500)
+    ap.add_argument("--min-vol", type=float, default=10000)
     ap.add_argument("--budget-seconds", type=float, default=1200)
     ap.add_argument("--dir", default="kalshi")
     ap.add_argument("--threads", type=int, default=8)
@@ -316,6 +343,7 @@ def main():
             STATUS["exemples"]["exchange_status"] = s
             break
     STATUS["exemples"]["historical_cutoff"] = get("/historical/cutoff", tries=2)
+    CUTOFF[0] = ts(((STATUS["exemples"]["historical_cutoff"] or {}).get("market_settled_ts")) or "")
     save_status(a.dir, phase="liste")
     # --- 1) liste, jour par jour ---
     t0 = int(datetime.fromisoformat(a.start).replace(tzinfo=timezone.utc).timestamp())
@@ -326,29 +354,53 @@ def main():
     for k, v in list(done_days.items()):
         if isinstance(v, list):  # ancien format : jour terminé
             done_days[k] = {"n": v[0], "k": v[1], "fin": True}
+    # compaction : une ligne par marché, dans la période, au-dessus du seuil de volume
+    if os.path.exists(mk_path):
+        keep = {}
+        with open(mk_path) as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except Exception:
+                    continue
+                if r[4] >= a.min_vol and t0 <= r[2] < t1:
+                    keep[r[0]] = line if line.endswith("\n") else line + "\n"
+        with open(mk_path, "w") as f:
+            f.writelines(keep.values())
+    mf = open(mk_path, "a")
+
+    def sink(rows):
+        kept = 0
+        with LOCK:
+            for r in rows:
+                if r[3] in ("yes", "no") and r[4] >= a.min_vol and r[0] and t0 <= r[2] < t1:
+                    mf.write(json.dumps(r) + "\n")
+                    kept += 1
+            mf.flush()
+        return kept
+    # marchés archivés : un fil à part, qui avance pendant tout le passage
+    hist_path = os.path.join(a.dir, "hist.json")
+    hist = json.load(open(hist_path)) if os.path.exists(hist_path) else {}
+    th = threading.Thread(target=list_hist, args=(hist, t0, left, sink), daemon=True)
+    th.start()
+
+    def end_hist():
+        th.join(timeout=60)
+        json.dump(hist, open(hist_path, "w"))
+        STATUS["historique"] = {k: hist.get(k) for k in ("n", "k", "fin", "min_close", "max_close", "echecs")}
     todo = [x for x in days if not done_days.get(str(x), {}).get("fin")]
     random.shuffle(todo)
     if todo and not pick_variant(days[-1]):
+        end_hist()
         save_status(a.dir, phase="liste impossible")
         return
     if todo:
-        mf = open(mk_path, "a")
-
-        def sink(rows):
-            kept = 0
-            with LOCK:
-                for r in rows:
-                    if r[3] in ("yes", "no") and r[4] >= a.min_vol and r[0] and r[2]:
-                        mf.write(json.dumps(r) + "\n")
-                        kept += 1
-            return kept
 
         def one(day):
             st = done_days.setdefault(str(day), {})
             list_day(day, st, left, sink)
         with ThreadPoolExecutor(a.threads) as ex:
             list(ex.map(one, todo))
-        mf.close()
         json.dump(done_days, open(days_path, "w"))
     fin = sum(1 for x in days if done_days.get(str(x), {}).get("fin"))
     n_listed = sum(v.get("n", 0) for v in done_days.values())
@@ -356,6 +408,8 @@ def main():
     print(f"liste : {fin}/{len(days)} jours, {n_listed} marchés lus, {n_kept} retenus", flush=True)
     save_status(a.dir, phase="liste", jours_faits=fin, jours_total=len(days), marches_listes=n_listed, marches_retenus=n_kept)
     if fin < len(days) or left() < 90:
+        end_hist()
+        save_status(a.dir, phase="liste")
         return
     # --- 2) chandeliers, par volume décroissant ---
     markets = {}
@@ -391,6 +445,7 @@ def main():
             df.write(ticker + "\n")
             done.add(ticker)
     remaining = [m for t, m in markets.items() if t not in done]
+    end_hist()
     # --- 3) catégories des séries présentes, puis synthèse ---
     cats_path = os.path.join(a.dir, "series.json")
     cats = json.load(open(cats_path)) if os.path.exists(cats_path) else {}
@@ -411,8 +466,8 @@ def main():
                           "volume_min_traite": min((markets[t][4] for t in done if t in markets), default=None),
                           "sans_chandeliers_ce_passage": n_none, "sources_ce_passage": srcs, "seuil_volume": a.min_vol}
     json.dump(summ, open(os.path.join(a.dir, "summary.json"), "w"), ensure_ascii=False, indent=1)
-    save_status(a.dir, phase="fini" if not remaining else "chandeliers", traites=len(done), restants=len(remaining))
-    if not remaining:
+    save_status(a.dir, phase="fini" if not remaining and hist.get("fin") else "chandeliers", traites=len(done), restants=len(remaining))
+    if not remaining and hist.get("fin"):
         open(os.path.join(a.dir, "DONE"), "w").write(datetime.now(timezone.utc).isoformat())
 
 
