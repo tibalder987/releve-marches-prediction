@@ -57,6 +57,8 @@ def get(path, params=None, tries=5):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
                 note(r.status)
+                with LOCK:
+                    RATE["gap"] = max(0.12, RATE["gap"] * 0.99)  # retour progressif au rythme normal
                 return json.loads(r.read().decode())
         except urllib.error.HTTPError as e:
             note(e.code)
@@ -146,7 +148,7 @@ def pick_variant(day0):
     return False
 
 
-def page_rows(ms):
+def page_rows(ms, src):
     out = []
     for m in ms:
         if str(m.get("ticker", "")).startswith("KXMVE"):
@@ -158,7 +160,7 @@ def page_rows(ms):
             v = float(v or 0)
         except Exception:
             v = 0.0
-        out.append([m.get("ticker"), m.get("event_ticker"), ts(m.get("close_time")), m.get("result"), v, ts(m.get("open_time"))])
+        out.append([m.get("ticker"), m.get("event_ticker"), ts(m.get("close_time")), m.get("result"), v, 0, src])
     return out
 
 
@@ -181,7 +183,7 @@ def list_day(day0, st, left, sink):
         if ms and "marche" not in STATUS["exemples"]:
             STATUS["exemples"]["marche"] = {k: ms[0][k] for k in list(ms[0])[:60]}
         st["n"] = st.get("n", 0) + len(ms)
-        st["k"] = st.get("k", 0) + sink(page_rows(ms))
+        st["k"] = st.get("k", 0) + sink(page_rows(ms, "l"))
         st["cur"] = j.get("cursor") or None
         if not st["cur"] or not ms:
             st["fin"] = True
@@ -202,7 +204,7 @@ def list_hist(st, t0, left, sink):
             time.sleep(2)
             continue
         ms = j.get("markets", [])
-        rows = page_rows(ms)
+        rows = page_rows(ms, "h")
         st["n"] = st.get("n", 0) + len(ms)
         st["k"] = st.get("k", 0) + sink(rows)
         closes = [r[2] for r in rows if r[2]]
@@ -217,9 +219,10 @@ def list_hist(st, t0, left, sink):
 CUTOFF = [0]
 
 
-def candles(ticker, series, close):
+def candles(ticker, series, close, src0=None):
     p = {"start_ts": close - 7 * 86400, "end_ts": close, "period_interval": 60}
-    order = ("hist", "live") if close < CUTOFF[0] - 86400 else ("live", "hist")
+    hist_first = src0 == "h" or (src0 is None and close < CUTOFF[0] - 86400)
+    order = ("hist", "live") if hist_first else ("live", "hist")
     c, src = None, order[0]
     for src in order:
         path = f"/historical/markets/{ticker}/candlesticks" if src == "hist" else f"/series/{series}/markets/{ticker}/candlesticks"
@@ -230,16 +233,17 @@ def candles(ticker, series, close):
 
 
 def process(m, series_cache):
-    ticker, ev, close, res, vol, _ = m
+    ticker, ev, close, res, vol = m[:5]
+    src0 = m[6] if len(m) > 6 else None
     series = series_cache.get(ev) or (ev or ticker).split("-")[0]
-    c, src = candles(ticker, series, close)
-    if c is None and ev not in series_cache:
-        e = get(f"/events/{ev}")
+    c, src = candles(ticker, series, close, src0)
+    if c is None and src0 != "h" and ev not in series_cache:  # série mal devinée : on la demande une fois par événement
+        e = get(f"/events/{ev}", tries=2)
         s2 = ((e or {}).get("event") or {}).get("series_ticker")
         series_cache[ev] = s2 or series
         if s2 and s2 != series:
             series = s2
-            c, src = candles(ticker, series, close)
+            c, src = candles(ticker, series, close, "l")
     if c is None:
         return ticker, None, src
     ks = c.get("candlesticks") or []
@@ -315,7 +319,7 @@ def summarize(d, cats):
         per = "disc" if r["close"] >= SPLIT else "val"
         cat = cats.get(r["series"], "?")
         for key in (f"{per}|TOUT|toutes|{r['band']}", f"{per}|TOUT|{window(r['h'])}|{r['band']}", f"{per}|{cat}|toutes|{r['band']}",
-                    f"{per}|{cat}|{window(r['h'])}|{r['band']}", f"{per}|TOUT|{'vol>=10000' if r['vol'] >= 10000 else 'vol<10000'}|{r['band']}"):
+                    f"{per}|{cat}|{window(r['h'])}|{r['band']}", f"{per}|TOUT|{'vol>=2,34M (tous)' if r['vol'] >= 2340280 else 'vol<2,34M (tirage)'}|{r['band']}"):
             groups.setdefault(key, []).append(r)
     for key in sorted(groups):
         if len(groups[key]) >= 30:
@@ -327,7 +331,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--start", default="2026-05-20")
     ap.add_argument("--end", default="2026-11-19")
-    ap.add_argument("--min-vol", type=float, default=10000)
+    ap.add_argument("--min-vol", type=float, default=20000)
     ap.add_argument("--budget-seconds", type=float, default=1200)
     ap.add_argument("--dir", default="kalshi")
     ap.add_argument("--threads", type=int, default=8)
@@ -422,7 +426,8 @@ def main():
                 pass
     done_path, rows_path = os.path.join(a.dir, "done.txt"), os.path.join(a.dir, "rows.csv")
     done = set(open(done_path).read().split()) if os.path.exists(done_path) else set()
-    todo = sorted((m for t, m in markets.items() if t not in done), key=lambda m: -m[4])
+    todo = [m for t, m in sorted(markets.items()) if t not in done]
+    random.Random(20261123).shuffle(todo)  # ordre aléatoire : les marchés traités sont un tirage sans biais des marchés retenus
     series_cache, n_none, srcs = {}, 0, {}
     stop = [False]
 
@@ -463,7 +468,7 @@ def main():
     json.dump(cats, open(cats_path, "w"), ensure_ascii=False)
     summ = summarize(a.dir, cats)
     summ["couverture"] = {"marches_retenus": len(markets), "traites": len(done), "restants": len(remaining),
-                          "volume_min_traite": min((markets[t][4] for t in done if t in markets), default=None),
+                          "ordre": "aleatoire depuis le 23/11/2026 12 h UTC ; les 7 995 premiers par volume decroissant",
                           "sans_chandeliers_ce_passage": n_none, "sources_ce_passage": srcs, "seuil_volume": a.min_vol}
     json.dump(summ, open(os.path.join(a.dir, "summary.json"), "w"), ensure_ascii=False, indent=1)
     save_status(a.dir, phase="fini" if not remaining and hist.get("fin") else "chandeliers", traites=len(done), restants=len(remaining))
