@@ -35,7 +35,7 @@ BASE = [BASES[0]]
 UA = {"User-Agent": "rejeu-lecture-seule/1.0", "Accept": "application/json"}
 STATUS = {"http": {}, "erreurs": [], "exemples": {}}
 LOCK = threading.Lock()
-RATE = {"gap": 0.11, "next": 0.0}
+RATE = {"gap": 0.12, "next": 0.0}
 BANDS = (("b0", 0.98, 0.9895), ("b1", 0.9895, 0.9955), ("b2", 0.9955, 0.9995))
 SPLIT = datetime(2026, 8, 20, tzinfo=timezone.utc).timestamp()  # validation avant, découverte après
 
@@ -64,7 +64,7 @@ def get(path, params=None, tries=5):
                 return None
             if e.code == 429:
                 with LOCK:
-                    RATE["gap"] = min(1.0, RATE["gap"] * 1.5)
+                    RATE["gap"] = min(0.5, RATE["gap"] * 1.3)
                 time.sleep(2 + 2 * i)
             else:
                 with LOCK:
@@ -146,34 +146,49 @@ def pick_variant(day0):
     return False
 
 
-def list_day(day0, endpoint):
-    out, cur, pages = [], None, 0
-    while True:
+def page_rows(ms):
+    out = []
+    for m in ms:
+        if str(m.get("ticker", "")).startswith("KXMVE"):
+            continue
+        v = m.get("volume_fp")
+        if v is None:
+            v = m.get("volume")
+        try:
+            v = float(v or 0)
+        except Exception:
+            v = 0.0
+        out.append([m.get("ticker"), m.get("event_ticker"), ts(m.get("close_time")), m.get("result"), v, ts(m.get("open_time"))])
+    return out
+
+
+def list_day(day0, st, left, sink):
+    """Avance la liste d'un jour, page par page, tant qu'il reste du temps. st = état repris d'un passage à l'autre."""
+    while left() > 25 and not st.get("fin"):
         p = VARIANTS[VARIANT[0]](day0)
-        if cur:
-            p["cursor"] = cur
-        j = get(endpoint, p)
-        pages += 1
+        if st.get("cur"):
+            p["cursor"] = st["cur"]
+        j = get(st.get("ep") or "/markets", p)
         if not j:
-            return out, pages, False
+            if not st.get("n") and not st.get("ep") and not st.get("cur"):
+                st["ep"] = "/historical/markets"  # un jour vide ou refusé : on essaie l'historique une fois
+                continue
+            st["echecs"] = st.get("echecs", 0) + 1
+            if st["echecs"] >= 3 and st.get("ep") == "/historical/markets" and not st.get("n"):
+                st["fin"] = True  # rien à lire pour ce jour
+            return
         ms = j.get("markets", [])
         if ms and "marche" not in STATUS["exemples"]:
             STATUS["exemples"]["marche"] = {k: ms[0][k] for k in list(ms[0])[:60]}
-        for m in ms:
-            v = m.get("volume_fp")
-            if v is None:
-                v = m.get("volume")
-            try:
-                v = float(v or 0)
-            except Exception:
-                v = 0.0
-            res = m.get("result")
-            if str(m.get("ticker", "")).startswith("KXMVE"):
+        rows = page_rows(ms)
+        st["n"] = st.get("n", 0) + len(ms)
+        st["k"] = st.get("k", 0) + sink(rows)
+        st["cur"] = j.get("cursor") or None
+        if not st["cur"] or not ms:
+            if not st["n"] and not st.get("ep"):
+                st["ep"] = "/historical/markets"
                 continue
-            out.append([m.get("ticker"), m.get("event_ticker"), ts(m.get("close_time")), res, v, ts(m.get("open_time"))])
-        cur = j.get("cursor")
-        if not cur or not ms:
-            return out, pages, True
+            st["fin"] = True
 
 
 def candles(ticker, series, close):
@@ -308,40 +323,39 @@ def main():
     days = list(range(t0, t1, 86400))
     days_path, mk_path = os.path.join(a.dir, "days.json"), os.path.join(a.dir, "markets.jsonl")
     done_days = json.load(open(days_path)) if os.path.exists(days_path) else {}
-    todo = [x for x in days if str(x) not in done_days]
+    for k, v in list(done_days.items()):
+        if isinstance(v, list):  # ancien format : jour terminé
+            done_days[k] = {"n": v[0], "k": v[1], "fin": True}
+    todo = [x for x in days if not done_days.get(str(x), {}).get("fin")]
     random.shuffle(todo)
     if todo and not pick_variant(days[-1]):
         save_status(a.dir, phase="liste impossible")
         return
     if todo:
-        def one(day):
-            if left() < 60:
-                return day, None
-            rows, pages, ok = list_day(day, "/markets")
-            src = "live"
-            if not rows:
-                r2, p2, ok2 = list_day(day, "/historical/markets")
-                if r2:
-                    rows, pages, ok, src = r2, p2, ok2, "hist"
-            return day, (rows, pages, ok, src)
-        with ThreadPoolExecutor(a.threads) as ex, open(mk_path, "a") as mf:
-            for day, res in ex.map(one, todo):
-                if res is None:
-                    continue
-                rows, pages, ok, src = res
-                if not ok:
-                    continue
-                kept = 0
+        mf = open(mk_path, "a")
+
+        def sink(rows):
+            kept = 0
+            with LOCK:
                 for r in rows:
                     if r[3] in ("yes", "no") and r[4] >= a.min_vol and r[0] and r[2]:
                         mf.write(json.dumps(r) + "\n")
                         kept += 1
-                done_days[str(day)] = [len(rows), kept, src]
+            return kept
+
+        def one(day):
+            st = done_days.setdefault(str(day), {})
+            list_day(day, st, left, sink)
+        with ThreadPoolExecutor(a.threads) as ex:
+            list(ex.map(one, todo))
+        mf.close()
         json.dump(done_days, open(days_path, "w"))
-    n_listed = sum(v[0] for v in done_days.values())
-    n_kept = sum(v[1] for v in done_days.values())
-    save_status(a.dir, phase="liste", jours_faits=len(done_days), jours_total=len(days), marches_listes=n_listed, marches_retenus=n_kept)
-    if len(done_days) < len(days) or left() < 90:
+    fin = sum(1 for x in days if done_days.get(str(x), {}).get("fin"))
+    n_listed = sum(v.get("n", 0) for v in done_days.values())
+    n_kept = sum(v.get("k", 0) for v in done_days.values())
+    print(f"liste : {fin}/{len(days)} jours, {n_listed} marchés lus, {n_kept} retenus", flush=True)
+    save_status(a.dir, phase="liste", jours_faits=fin, jours_total=len(days), marches_listes=n_listed, marches_retenus=n_kept)
+    if fin < len(days) or left() < 90:
         return
     # --- 2) chandeliers, par volume décroissant ---
     markets = {}
