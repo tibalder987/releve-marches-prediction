@@ -15,6 +15,8 @@ jobs:
     timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Relance
         env:
           GH_TOKEN: ${{ github.token }}
@@ -26,9 +28,12 @@ jobs:
         run: |
           git config user.name "releve-bot"
           git config user.email "releve-bot@users.noreply.github.com"
+          sync() { for i in 1 2 3 4 5; do git pull -q --rebase --autostash && git push -q && return 0; git rebase --abort 2>/dev/null || true; sleep 5; done; return 0; }
           END=$(( $(date +%s) + 19200 ))
           while [ $(date +%s) -lt $END ] && [ ! -f kalshi/DONE ]; do
-            python3 kalshi_replay.py --start 2026-05-20 --end 2026-11-19 --budget-seconds 1200 --dir kalshi || true
+            CODE=0
+            python3 kalshi_replay.py --start 2026-05-20 --end 2026-11-19 --budget-seconds 1200 --dir kalshi || CODE=$?
             git add -A kalshi && git commit -q -m "kalshi $(date -u +%FT%TZ)" || true
-            for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done || true
+            sync
+            if [ $CODE -ne 0 ]; then sleep 60; fi
           done

@@ -15,6 +15,8 @@ jobs:
     timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Relance
         env:
           GH_TOKEN: ${{ github.token }}
@@ -26,13 +28,14 @@ jobs:
         run: |
           git config user.name "releve-bot"
           git config user.email "releve-bot@users.noreply.github.com"
+          sync() { for i in 1 2 3 4 5; do git pull -q --rebase --autostash && git push -q && return 0; git rebase --abort 2>/dev/null || true; sleep 5; done; return 0; }
           END=$(( $(date +%s) + 19200 ))
           while [ $(date +%s) -lt $END ]; do
             CODE=0
             python3 file_5m.py --dir file --max-seconds 3300 --until 2026-12-07T08:00:00Z || CODE=$?
             gzip -f file/file-*.jsonl 2>/dev/null || true
             git add -A file && git commit -q -m "file $(date -u +%FT%TZ)" || true
-            for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done || true
+            sync
             if [ $CODE -eq 3 ]; then break; fi
             if [ $CODE -ne 0 ]; then sleep 60; fi
           done
