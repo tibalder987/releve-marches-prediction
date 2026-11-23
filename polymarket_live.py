@@ -313,16 +313,22 @@ def settle(d):
     # résultats
     res = {}
     ids = sorted({r["id"] for r in obs})
-    for i, mid in enumerate(ids):
+    def one(mid):
         j = http_json(GAMMA_ONE + str(mid))
         if j and j.get("closed"):
             try:
-                pay = [float(x) for x in json.loads(j["outcomePrices"])]
-                res[mid] = pay
+                return mid, [float(x) for x in json.loads(j["outcomePrices"])]
             except Exception:
                 pass
-        if i % 200 == 0:
-            print(f"règlements lus : {i}/{len(ids)}", flush=True)
+        return mid, None
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(8) as ex:
+        for i, (mid, pay) in enumerate(ex.map(one, ids)):
+            if pay:
+                res[mid] = pay
+            if i % 2000 == 0:
+                print(f"règlements lus : {i}/{len(ids)}", flush=True)
+    print(f"{len(obs)} observations, {len(ids)} marchés, {len(res)} réglés", flush=True)
     for rule in RULES:
         taken = set()
         rows = []
