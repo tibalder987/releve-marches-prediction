@@ -1,0 +1,37 @@
+name: releve
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/releve.yml', 'polymarket_live.py', 'diag.py']
+  schedule:
+    - cron: '7 * * * *'
+concurrency:
+  group: releve
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Diagnostic
+        run: |
+          git config user.name "releve-bot"
+          git config user.email "releve-bot@users.noreply.github.com"
+          mkdir -p status
+          python3 diag.py > status/diag-releve.json || true
+          git add -A status && git commit -q -m "diagnostic $(date -u +%FT%TZ)" || true
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
+      - name: Releve des carnets
+        run: |
+          END=$(( $(date +%s) + 19200 ))
+          while [ $(date +%s) -lt $END ]; do
+            CODE=0
+            python3 polymarket_live.py collect --dir data --max-seconds 3300 --until 2026-12-07T08:00:00Z || CODE=$?
+            gzip -f data/obs-*.jsonl 2>/dev/null || true
+            git add -A data && git commit -q -m "releve $(date -u +%FT%TZ)" || true
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
+            if [ $CODE -eq 3 ]; then break; fi
+          done
