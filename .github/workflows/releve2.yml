@@ -1,0 +1,41 @@
+name: releve2
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/releve2.yml']
+concurrency:
+  group: releve
+  cancel-in-progress: false
+permissions:
+  contents: write
+  actions: write
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Relance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ $(date +%s) -lt $(date -d 2026-12-07T08:00:00Z +%s) ]; then gh workflow run releve2.yml --ref main || true; fi
+      - name: Releve des carnets
+        run: |
+          git config user.name "releve-bot"
+          git config user.email "releve-bot@users.noreply.github.com"
+          END=$(( $(date +%s) + 15000 ))
+          while [ $(date +%s) -lt $END ]; do
+            CODE=0
+            python3 polymarket_live.py collect --dir data --max-seconds 3300 --until 2026-12-07T08:00:00Z || CODE=$?
+            gzip -f data/obs-*.jsonl 2>/dev/null || true
+            git add -A data && git commit -q -m "releve $(date -u +%FT%TZ)" || true
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
+            if [ $CODE -ne 0 ]; then break; fi
+          done
+      - name: Bilan
+        run: |
+          mkdir -p status
+          timeout 3000 python3 polymarket_live.py settle --dir data > status/bilan.txt 2>&1 || true
+          git add -A status && git commit -q -m "bilan $(date -u +%FT%TZ)" || true
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
