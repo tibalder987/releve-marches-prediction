@@ -1,0 +1,28 @@
+name: kalshi
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/kalshi.yml', 'kalshi_replay.py']
+  schedule:
+    - cron: '23 */6 * * *'
+concurrency:
+  group: kalshi
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  kalshi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rejeu Kalshi
+        run: |
+          git config user.name "releve-bot"
+          git config user.email "releve-bot@users.noreply.github.com"
+          END=$(( $(date +%s) + 19200 ))
+          while [ $(date +%s) -lt $END ] && [ ! -f kalshi/DONE ]; do
+            python3 kalshi_replay.py --start 2026-05-20 --end 2026-11-19 --budget-seconds 1200 --dir kalshi || true
+            git add -A kalshi && git commit -q -m "kalshi $(date -u +%FT%TZ)" || true
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
+          done
