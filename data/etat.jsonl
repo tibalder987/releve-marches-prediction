@@ -1,2 +1,3 @@
 {"debut": "2026-11-23T07:09:49.115853+00:00", "fin": "2026-11-23T08:04:50.235400+00:00", "cycles": 106, "observations": 3986, "issues_candidates": 395, "marches_connus": 930, "http": {"ok": 550, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-23T08:04:52.691945+00:00", "fin": "2026-11-23T08:59:54.199440+00:00", "cycles": 106, "observations": 3867, "issues_candidates": 411, "marches_connus": 987, "http": {"ok": 563, "echecs": 0, "derniere_erreur": ""}}
+{"debut": "2026-11-23T08:59:57.213425+00:00", "fin": "2026-11-23T09:54:58.605520+00:00", "cycles": 106, "observations": 4049, "issues_candidates": 416, "marches_connus": 1021, "http": {"ok": 574, "echecs": 0, "derniere_erreur": ""}}
