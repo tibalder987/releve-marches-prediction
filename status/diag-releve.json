@@ -1,12 +1,12 @@
 {
- "quand": "2026-11-23T07:09:47Z",
+ "quand": "2026-11-23T12:41:06Z",
  "gamma": {
   "http": 200,
   "debut": "{\"markets\":[{\"id\":\"559651\",\"question\":\"Xi Jinping out before 2027?\",\"conditionId\":\"0xa467b14d51f01b957109d9cbb1d6c124fab2a089d52ed8f471d23c2812e743b7\",\"slug\":\"x"
  },
  "clob_time": {
   "http": 200,
-  "debut": "1795417787"
+  "debut": "1795437666"
  },
  "clob_books": {
   "http": 200,
@@ -14,7 +14,7 @@
  },
  "data_api": {
   "http": 200,
-  "debut": "{\"data\":[{\"proxy_wallet\":\"0x17dbae6fecba1c02bd673887b3cd94b75529c1e8\",\"side\":\"BUY\",\"token_id\":\"35144397167598809094721959483684265472409028657112290137678796469"
+  "debut": "{\"data\":[{\"proxy_wallet\":\"0x081e14554b92ee3dc53a21bd5b01f306692ef76e\",\"side\":\"BUY\",\"token_id\":\"19575909315821841097446367280122312703433158587951075276703991819"
  },
  "kalshi": {
   "http": 200,
@@ -22,6 +22,6 @@
  },
  "kalshi_markets": {
   "http": 200,
-  "debut": "{\"cursor\":\"CgwIl82P2AYQ8NnNoQISMktYTVZFQ1JPU1NDQVRFR09SWS1TMjAyNkVGMkQ2WVlDTkE3RVdNUTMtT0NVSE5BUVRJ\",\"markets\":[{\"can_close_early\":true,\"close_time\":\"2026-11-26"
+  "debut": "{\"cursor\":\"CgwI4eiQ2AYQ6NqEpwISMktYTVZFQ1JPU1NDQVRFR09SWS1TMjAyNkNFN09URE9CWlkzWFhFUEstWDVYUjJEQ0M1\",\"markets\":[{\"can_close_early\":true,\"close_time\":\"2026-11-26"
  }
 }
