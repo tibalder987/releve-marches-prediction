@@ -1,7 +1,8 @@
 {
  "http": {
-  "200": 2379,
-  "429": 6
+  "200": 2242,
+  "429": 6,
+  "404": 169
  },
  "erreurs": [],
  "exemples": {
@@ -48,25 +49,27 @@
   },
   "marche": {
    "can_close_early": true,
-   "close_time": "2026-11-09T23:59:59Z",
-   "created_time": "2026-11-08T20:55:22.837496Z",
-   "early_close_condition": "This market may close and expire early once USGS has reviewed and finalized all earthquakes from the Period and the highest qualifying magnitude is known.",
-   "event_ticker": "KXBIGGESTQUAKE-09NOV26",
+   "close_time": "2026-08-02T19:00:00Z",
+   "created_time": "2026-07-16T22:00:35.840889Z",
+   "custom_strike": {
+    "Word": "Zlatan / Ibrahimovic"
+   },
+   "early_close_condition": "This market will close and expire early if the event occurs.",
+   "event_ticker": "KXWCMENTION-26JUL19ESPARG",
    "exchange_index": 0,
-   "expected_expiration_time": "2026-11-09T23:59:59Z",
+   "expected_expiration_time": "2026-08-02T19:00:00Z",
    "expiration_value": "No",
-   "floor_strike": 7,
-   "last_price_dollars": "0.0100",
-   "latest_expiration_time": "2026-11-16T15:00:00Z",
+   "last_price_dollars": "0.0000",
+   "latest_expiration_time": "2026-08-02T19:00:00Z",
    "market_type": "binary",
    "no_ask_dollars": "1.0000",
    "no_bid_dollars": "0.0000",
-   "no_sub_title": "Magnitude of at least 7.0",
+   "no_sub_title": "Zlatan / Ibrahimovic",
    "notional_value_dollars": "1.0000",
-   "occurrence_datetime": "2026-11-10T01:35:59Z",
-   "open_interest_fp": "1599.85",
-   "open_time": "2026-11-08T21:00:00Z",
-   "previous_price_dollars": "0.0100",
+   "occurrence_datetime": "2026-08-02T19:00:00Z",
+   "open_interest_fp": "0.00",
+   "open_time": "2026-07-16T22:10:00Z",
+   "previous_price_dollars": "0.0000",
    "previous_yes_ask_dollars": "1.0000",
    "previous_yes_bid_dollars": "0.0000",
    "price_level_structure": "linear_cent",
@@ -78,40 +81,67 @@
     }
    ],
    "result": "no",
-   "rules_primary": "If the highest USGS-reported earthquake magnitude worldwide during Nov 9, 2026 from 12:00:00 AM through 11:59:59 PM UTC is 7.0 or higher, then the market resolves to Yes.",
-   "rules_secondary": "The determining value is the USGS-reported magnitude displayed at Expiration, preferentially moment magnitude (Mw) and otherwise the primary magnitude type reported by USGS. If multiple earthquakes tie for the highest magnitude, all tied earthquakes count. If USGS ComCat is unavailable at Expiration, settlement may be delayed under the Contract contingencies.",
+   "rules_primary": "If \nany official broadcast commentator - includes play by play, color commentator, rules analyst or sideline reporter says Zlatan / Ibrahimovic as part of Spain vs Argentina\n, then the market resolves to Yes.",
+   "rules_secondary": "Video of the Spain vs Argentina originally scheduled for Jul 19, 2026 will be primarily used to resolve the market; if a consensus by Kalshi employees cannot be reached using video, internal & external (official) transcripts of the Spain vs Argentina originally scheduled for Jul 19, 2026 will be used.\n\nPayout Criterion: \nThe exact phrase/word, or a plural or possessive form of the phrase/word, must be used. Grammatical/tense inflections are otherwise not included. \nCommentary will count following kickoff and end once the match has concluded, inclusive of extra time and/or a penalty shootout. Commentary will no longer count following the referee's final whistle. If the final action is under VAR review, commentary will end following the referee's decision.\nCommercials including any official broadcast commentator - includes play by play, color commentator, rules analyst or sideline reporter - will not count, but promotional content featured within the match/game broadcast will count. \nCommentary from players, coaches, referees/umpires, guests, halftime segment reporters, or any individual not included in the official broadcast team do not count. \nFor the purpose of this market, the entirety of content within the original qualifying broadcast segments will be used for resolution.\nPlease see full rules for more details.\n\nEvent does not qualify:\nIf an event is definitively cancelled or the event fails to qualify under the Payout Criterion, or any other circumstance prevents normal resolution, then the market for \"Event does not qualify\" resolves to Yes and all other markets will resolve to No.  \n\nPostponement:\nIf the event is postponed, and such a postponement is announced by the end of the following calendar day to be rescheduled to a time within 14 calendar days, the markets shall remain open.",
    "settlement_bounds_type": "default",
    "settlement_timer_seconds": 1800,
-   "settlement_ts": "2026-11-10T02:10:31.208944Z",
+   "settlement_ts": "2026-10-27T03:00:39.986508Z",
    "settlement_value_dollars": "0.0000",
    "status": "finalized",
-   "strike_type": "greater_or_equal",
-   "ticker": "KXBIGGESTQUAKE-09NOV26-7.0",
-   "title": "What will the biggest earthquake be on Nov 9, 2026?",
-   "updated_time": "2026-11-10T02:10:31.704523Z",
+   "strike_type": "custom",
+   "ticker": "KXWCMENTION-26JUL19ESPARG-ZLAT",
+   "title": "What will the announcers say during Spain vs Argentina?",
+   "updated_time": "2026-10-27T03:00:40.324126Z",
    "volume_24h_fp": "0.00",
-   "volume_fp": "2149.00",
+   "volume_fp": "0.00",
    "yes_ask_dollars": "1.0000",
    "yes_ask_size_fp": "0.00",
    "yes_bid_dollars": "0.0000",
    "yes_bid_size_fp": "0.00",
-   "yes_sub_title": "Magnitude of at least 7.0"
+   "yes_sub_title": "Zlatan / Ibrahimovic"
+  },
+  "chandelier": {
+   "end_period_ts": 1793768400,
+   "open_interest_fp": "101968267.76",
+   "price": {
+    "close_dollars": "0.0010",
+    "high_dollars": "0.0030",
+    "low_dollars": "0.0010",
+    "mean_dollars": "0.0015",
+    "open_dollars": "0.0030",
+    "previous_dollars": "0.0030"
+   },
+   "volume_fp": "8894763.67",
+   "yes_ask": {
+    "close_dollars": "0.0010",
+    "high_dollars": "0.0030",
+    "low_dollars": "0.0010",
+    "open_dollars": "0.0030"
+   },
+   "yes_bid": {
+    "close_dollars": "0.0000",
+    "high_dollars": "0.0020",
+    "low_dollars": "0.0000",
+    "open_dollars": "0.0020"
+   }
   }
  },
- "phase": "liste",
- "maj": "2026-11-23T08:51:41.993739+00:00",
+ "phase": "chandeliers",
+ "maj": "2026-11-23T09:11:42.945408+00:00",
  "base": "https://api.elections.kalshi.com/trade-api/v2",
  "variante_liste": 0,
- "jours_faits": 151,
+ "jours_faits": 183,
  "jours_total": 183,
- "marches_listes": 6762632,
- "marches_retenus": 592499,
+ "marches_listes": 7523935,
+ "marches_retenus": 641460,
  "historique": {
-  "n": 529000,
-  "k": 21883,
+  "n": 834000,
+  "k": 40324,
   "fin": null,
-  "min_close": 1789621200,
-  "max_close": 1789704000,
+  "min_close": 1789275600,
+  "max_close": 1789286400,
   "echecs": null
- }
+ },
+ "traites": 940,
+ "restants": 339695
 }
