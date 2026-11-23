@@ -2,7 +2,7 @@ name: file2
 on:
   workflow_dispatch:
   push:
-    paths: ['.github/workflows/file2.yml']
+    paths: ['.github/workflows/file2.yml', 'relance/file.txt']
 concurrency:
   group: file
   cancel-in-progress: false
@@ -19,7 +19,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ $(date +%s) -lt $(date -d 2026-12-07T08:00:00Z +%s) ]; then gh workflow run file2.yml --ref main || true; fi
+          if [ $(date +%s) -lt $(date -d 2026-12-07T08:00:00Z +%s) ]; then
+            for i in 1 2 3 4 5; do gh workflow run file2.yml --ref main && break; sleep 20; done || true
+          fi
       - name: File crypto 5 minutes
         run: |
           git config user.name "releve-bot"
@@ -30,6 +32,7 @@ jobs:
             python3 file_5m.py --dir file --max-seconds 3300 --until 2026-12-07T08:00:00Z || CODE=$?
             gzip -f file/file-*.jsonl 2>/dev/null || true
             git add -A file && git commit -q -m "file $(date -u +%FT%TZ)" || true
-            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
-            if [ $CODE -ne 0 ]; then break; fi
+            for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done || true
+            if [ $CODE -eq 3 ]; then break; fi
+            if [ $CODE -ne 0 ]; then sleep 60; fi
           done

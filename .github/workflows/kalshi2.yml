@@ -1,0 +1,34 @@
+name: kalshi2
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/kalshi2.yml', 'relance/kalshi.txt']
+concurrency:
+  group: kalshi
+  cancel-in-progress: false
+permissions:
+  contents: write
+  actions: write
+jobs:
+  kalshi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Relance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f kalshi/DONE ]; then
+            for i in 1 2 3 4 5; do gh workflow run kalshi2.yml --ref main && break; sleep 20; done || true
+          fi
+      - name: Rejeu Kalshi
+        run: |
+          git config user.name "releve-bot"
+          git config user.email "releve-bot@users.noreply.github.com"
+          END=$(( $(date +%s) + 19200 ))
+          while [ $(date +%s) -lt $END ] && [ ! -f kalshi/DONE ]; do
+            python3 kalshi_replay.py --start 2026-05-20 --end 2026-11-19 --budget-seconds 1200 --dir kalshi || true
+            git add -A kalshi && git commit -q -m "kalshi $(date -u +%FT%TZ)" || true
+            for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done || true
+          done

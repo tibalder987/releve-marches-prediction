@@ -2,7 +2,7 @@ name: releve2
 on:
   workflow_dispatch:
   push:
-    paths: ['.github/workflows/releve2.yml']
+    paths: ['.github/workflows/releve2.yml', 'relance/releve.txt']
 concurrency:
   group: releve
   cancel-in-progress: false
@@ -19,23 +19,26 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ $(date +%s) -lt $(date -d 2026-12-07T08:00:00Z +%s) ]; then gh workflow run releve2.yml --ref main || true; fi
+          if [ $(date +%s) -lt $(date -d 2026-12-07T08:00:00Z +%s) ]; then
+            for i in 1 2 3 4 5; do gh workflow run releve2.yml --ref main && break; sleep 20; done || true
+          fi
       - name: Releve des carnets
         run: |
           git config user.name "releve-bot"
           git config user.email "releve-bot@users.noreply.github.com"
-          END=$(( $(date +%s) + 15000 ))
+          mkdir -p status /tmp/snap
+          cp -r data/. /tmp/snap/ 2>/dev/null || true
+          ( timeout 12000 python3 polymarket_live.py settle --dir /tmp/snap > /tmp/bilan.txt 2>&1 || true; cp /tmp/bilan.txt status/bilan.txt ) &
+          END=$(( $(date +%s) + 19200 ))
           while [ $(date +%s) -lt $END ]; do
             CODE=0
             python3 polymarket_live.py collect --dir data --max-seconds 3300 --until 2026-12-07T08:00:00Z || CODE=$?
             gzip -f data/obs-*.jsonl 2>/dev/null || true
-            git add -A data && git commit -q -m "releve $(date -u +%FT%TZ)" || true
-            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
-            if [ $CODE -ne 0 ]; then break; fi
+            git add -A data status && git commit -q -m "releve $(date -u +%FT%TZ)" || true
+            for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done || true
+            if [ $CODE -eq 3 ]; then break; fi
+            if [ $CODE -ne 0 ]; then sleep 60; fi
           done
-      - name: Bilan
-        run: |
-          mkdir -p status
-          timeout 3000 python3 polymarket_live.py settle --dir data > status/bilan.txt 2>&1 || true
+          wait || true
           git add -A status && git commit -q -m "bilan $(date -u +%FT%TZ)" || true
-          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done || true
+          for i in 1 2 3; do git pull -q --rebase --autostash && git push -q && break; sleep 5; done || true
