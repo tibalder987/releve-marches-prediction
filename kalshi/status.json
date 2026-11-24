@@ -1,8 +1,8 @@
 {
  "http": {
-  "200": 3885,
-  "429": 150,
-  "404": 519
+  "200": 3921,
+  "404": 554,
+  "429": 152
  },
  "erreurs": [],
  "exemples": {
@@ -48,33 +48,33 @@
    "trades_created_ts": "2026-09-25T00:00:00Z"
   },
   "chandelier": {
-   "end_period_ts": 1786647600,
-   "open_interest": "40440.95",
+   "end_period_ts": 1787799600,
+   "open_interest": "21638.12",
    "price": {
-    "close": "0.0100",
-    "high": "0.1100",
-    "low": "0.0100",
-    "mean": "0.0395",
-    "open": "0.1100",
-    "previous": "0.1100"
+    "close": "0.5000",
+    "high": "0.6700",
+    "low": "0.2200",
+    "mean": "0.4114",
+    "open": "0.6200",
+    "previous": "0.6300"
    },
-   "volume": "44921.91",
+   "volume": "22277.22",
    "yes_ask": {
-    "close": "0.0100",
-    "high": "0.1600",
-    "low": "0.0100",
-    "open": "0.1100"
+    "close": "0.5000",
+    "high": "0.7600",
+    "low": "0.2200",
+    "open": "0.6900"
    },
    "yes_bid": {
-    "close": "0.0000",
-    "high": "0.1100",
-    "low": "0.0000",
-    "open": "0.1000"
+    "close": "0.4900",
+    "high": "0.6200",
+    "low": "0.2000",
+    "open": "0.6200"
    }
   }
  },
  "phase": "chandeliers",
- "maj": "2026-11-24T15:02:06.392144+00:00",
+ "maj": "2026-11-24T15:21:45.226197+00:00",
  "base": "https://api.elections.kalshi.com/trade-api/v2",
  "jours_faits": 183,
  "jours_total": 183,
@@ -88,6 +88,6 @@
   "max_close": 1779138000,
   "echecs": null
  },
- "traites": 279372,
- "restants": 223312
+ "traites": 282857,
+ "restants": 219827
 }
