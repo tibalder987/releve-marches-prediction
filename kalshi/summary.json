@@ -1,49 +1,49 @@
 {
- "achats": 35317,
+ "achats": 35827,
  "cellules": {
   "disc|Climate and Weather|1-6h|b0": {
-   "n": 50,
+   "n": 54,
    "pertes": 4,
    "perte_ic": [
-    3.155,
-    18.838
+    2.918,
+    17.554
    ],
    "seuil": 98.14,
-   "rdt": -6.256,
+   "rdt": -5.653,
    "rdt_ic": [
-    -16.82,
+    -16.631,
     1.895
    ],
-   "jours": 34,
-   "evenements": 37
+   "jours": 36,
+   "evenements": 38
   },
   "disc|Climate and Weather|1-6h|b1": {
-   "n": 78,
+   "n": 82,
    "pertes": 2,
    "perte_ic": [
-    0.706,
-    8.875
+    0.671,
+    8.463
    ],
    "seuil": 99.07,
-   "rdt": -1.649,
+   "rdt": -1.523,
    "rdt_ic": [
-    -5.45,
+    -5.37,
     0.939
    ],
-   "jours": 46,
-   "evenements": 50
+   "jours": 47,
+   "evenements": 52
   },
   "disc|Climate and Weather|24-72h|b0": {
-   "n": 172,
+   "n": 173,
    "pertes": 11,
    "perte_ic": [
-    3.608,
-    11.088
+    3.587,
+    11.026
    ],
    "seuil": 98.14,
-   "rdt": -4.621,
+   "rdt": -4.584,
    "rdt_ic": [
-    -8.797,
+    -9.022,
     -1.05
    ],
    "jours": 75,
@@ -59,87 +59,87 @@
    "seuil": 99.07,
    "rdt": -2.495,
    "rdt_ic": [
-    -5.504,
-    0.247
+    -5.975,
+    0.233
    ],
    "jours": 73,
    "evenements": 114
   },
   "disc|Climate and Weather|6-24h|b0": {
-   "n": 221,
+   "n": 228,
    "pertes": 8,
    "perte_ic": [
-    1.845,
-    6.979
+    1.788,
+    6.77
    ],
    "seuil": 98.14,
-   "rdt": -1.793,
+   "rdt": -1.68,
    "rdt_ic": [
-    -5.28,
-    0.531
+    -4.648,
+    0.578
    ],
    "jours": 84,
-   "evenements": 169
+   "evenements": 172
   },
   "disc|Climate and Weather|6-24h|b1": {
-   "n": 243,
+   "n": 247,
    "pertes": 13,
    "perte_ic": [
-    3.153,
-    8.937
+    3.101,
+    8.795
    ],
    "seuil": 99.07,
-   "rdt": -4.461,
+   "rdt": -4.374,
    "rdt_ic": [
-    -7.763,
-    -1.606
+    -7.873,
+    -1.768
    ],
    "jours": 83,
-   "evenements": 179
+   "evenements": 181
   },
   "disc|Climate and Weather|toutes|b0": {
-   "n": 464,
+   "n": 476,
    "pertes": 25,
    "perte_ic": [
-    3.676,
-    7.833
+    3.582,
+    7.638
    ],
    "seuil": 98.14,
-   "rdt": -3.595,
+   "rdt": -3.456,
    "rdt_ic": [
-    -6.065,
-    -1.604
+    -5.504,
+    -1.322
    ],
    "jours": 90,
-   "evenements": 270
+   "evenements": 271
   },
   "disc|Climate and Weather|toutes|b1": {
-   "n": 498,
+   "n": 506,
    "pertes": 22,
    "perte_ic": [
-    2.935,
-    6.598
+    2.889,
+    6.495
    ],
    "seuil": 99.07,
-   "rdt": -3.52,
+   "rdt": -3.45,
    "rdt_ic": [
-    -5.521,
-    -1.849
+    -5.477,
+    -1.761
    ],
    "jours": 92,
    "evenements": 278
   },
   "disc|Commodities|1-6h|b0": {
-   "n": 31,
+   "n": 33,
    "pertes": 3,
    "perte_ic": [
-    3.346,
-    24.9
+    3.14,
+    23.573
    ],
    "seuil": 98.14,
-   "rdt": -7.966,
+   "rdt": -7.368,
    "rdt_ic": [
-    -18.484,
+    -19.083,
     1.895
    ],
    "jours": 23,
@@ -155,40 +155,40 @@
    "seuil": 99.07,
    "rdt": -4.885,
    "rdt_ic": [
-    -12.146,
+    -12.393,
     0.939
    ],
    "jours": 37,
    "evenements": 44
   },
   "disc|Commodities|24-72h|b0": {
-   "n": 36,
+   "n": 37,
    "pertes": 8,
    "perte_ic": [
-    11.716,
-    38.085
+    11.387,
+    37.195
    ],
    "seuil": 98.14,
-   "rdt": -20.748,
+   "rdt": -20.136,
    "rdt_ic": [
-    -39.414,
-    -6.839
+    -36.922,
+    -5.214
    ],
    "jours": 25,
    "evenements": 25
   },
   "disc|Commodities|24-72h|b1": {
-   "n": 40,
+   "n": 42,
    "pertes": 10,
    "perte_ic": [
-    14.187,
-    40.194
+    13.481,
+    38.528
    ],
    "seuil": 99.07,
-   "rdt": -24.296,
+   "rdt": -23.094,
    "rdt_ic": [
-    -43.06,
-    -10.798
+    -42.321,
+    -8.674
    ],
    "jours": 27,
    "evenements": 26
@@ -203,103 +203,103 @@
    "seuil": 99.114,
    "rdt": 0.894,
    "rdt_ic": [
-    0.851,
-    0.939
+    0.842,
+    0.933
    ],
    "jours": 27,
    "evenements": 31
   },
   "disc|Commodities|<=1h|b2": {
-   "n": 46,
+   "n": 47,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    7.707
+    7.556
    ],
-   "seuil": 99.892,
-   "rdt": 0.108,
+   "seuil": 99.893,
+   "rdt": 0.107,
    "rdt_ic": [
     0.098,
     0.121
    ],
    "jours": 22,
-   "evenements": 46
+   "evenements": 47
   },
   "disc|Commodities|toutes|b0": {
-   "n": 126,
+   "n": 129,
    "pertes": 22,
    "perte_ic": [
-    11.823,
-    25.023
+    11.541,
+    24.473
    ],
    "seuil": 98.142,
-   "rdt": -15.898,
+   "rdt": -15.484,
    "rdt_ic": [
-    -24.736,
-    -7.552
+    -24.97,
+    -8.294
    ],
    "jours": 57,
    "evenements": 67
   },
   "disc|Commodities|toutes|b1": {
-   "n": 163,
+   "n": 165,
    "pertes": 21,
    "perte_ic": [
-    8.583,
-    18.893
+    8.477,
+    18.673
    ],
    "seuil": 99.079,
-   "rdt": -12.073,
+   "rdt": -11.916,
    "rdt_ic": [
-    -18.92,
-    -6.563
+    -18.234,
+    -6.174
    ],
    "jours": 63,
    "evenements": 88
   },
   "disc|Commodities|toutes|b2": {
-   "n": 46,
+   "n": 47,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    7.707
+    7.556
    ],
-   "seuil": 99.892,
-   "rdt": 0.108,
+   "seuil": 99.893,
+   "rdt": 0.107,
    "rdt_ic": [
     0.098,
     0.119
    ],
    "jours": 22,
-   "evenements": 46
+   "evenements": 47
   },
   "disc|Crypto|1-6h|b0": {
-   "n": 202,
+   "n": 204,
    "pertes": 6,
    "perte_ic": [
-    1.368,
-    6.328
+    1.355,
+    6.267
    ],
    "seuil": 98.14,
-   "rdt": -1.131,
+   "rdt": -1.102,
    "rdt_ic": [
-    -4.383,
-    1.396
+    -4.662,
+    1.428
    ],
    "jours": 77,
    "evenements": 95
   },
   "disc|Crypto|1-6h|b1": {
-   "n": 308,
+   "n": 310,
    "pertes": 4,
    "perte_ic": [
-    0.506,
-    3.291
+    0.503,
+    3.27
    ],
    "seuil": 99.07,
-   "rdt": -0.372,
+   "rdt": -0.364,
    "rdt_ic": [
-    -2.238,
+    -2.12,
     0.939
    ],
    "jours": 88,
@@ -315,8 +315,8 @@
    "seuil": 98.14,
    "rdt": -10.842,
    "rdt_ic": [
-    -17.21,
-    -4.554
+    -19.083,
+    -4.012
    ],
    "jours": 28,
    "evenements": 25
@@ -331,43 +331,43 @@
    "seuil": 99.07,
    "rdt": -12.702,
    "rdt_ic": [
-    -19.591,
-    -6.271
+    -20.153,
+    -6.376
    ],
    "jours": 27,
    "evenements": 27
   },
   "disc|Crypto|6-24h|b0": {
-   "n": 304,
+   "n": 306,
    "pertes": 24,
    "perte_ic": [
-    5.362,
-    11.478
+    5.327,
+    11.405
    ],
    "seuil": 98.14,
-   "rdt": -6.149,
+   "rdt": -6.097,
    "rdt_ic": [
-    -10.235,
-    -2.86
+    -10.15,
+    -2.688
    ],
    "jours": 89,
    "evenements": 132
   },
   "disc|Crypto|6-24h|b1": {
-   "n": 254,
-   "pertes": 22,
+   "n": 257,
+   "pertes": 23,
    "perte_ic": [
-    5.789,
-    12.765
+    6.037,
+    13.07
    ],
    "seuil": 99.07,
-   "rdt": -7.804,
+   "rdt": -8.095,
    "rdt_ic": [
-    -12.916,
-    -3.531
+    -13.155,
+    -3.575
    ],
    "jours": 81,
-   "evenements": 111
+   "evenements": 112
   },
   "disc|Crypto|<=1h|b0": {
    "n": 33,
@@ -386,11 +386,11 @@
    "evenements": 29
   },
   "disc|Crypto|<=1h|b1": {
-   "n": 77,
+   "n": 79,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    4.752
+    4.637
    ],
    "seuil": 99.07,
    "rdt": 0.939,
@@ -398,72 +398,72 @@
     0.939,
     0.939
    ],
-   "jours": 52,
-   "evenements": 66
+   "jours": 53,
+   "evenements": 68
   },
   "disc|Crypto|>72h|b0": {
-   "n": 87,
+   "n": 89,
    "pertes": 12,
    "perte_ic": [
-    8.07,
-    22.579
+    7.884,
+    22.104
    ],
    "seuil": 98.14,
-   "rdt": -12.159,
+   "rdt": -11.843,
    "rdt_ic": [
-    -21.619,
-    -3.583
+    -22.08,
+    -3.303
    ],
    "jours": 44,
-   "evenements": 35
+   "evenements": 36
   },
   "disc|Crypto|>72h|b1": {
-   "n": 91,
+   "n": 93,
    "pertes": 12,
    "perte_ic": [
-    7.707,
-    21.649
+    7.538,
+    21.212
    ],
    "seuil": 99.07,
-   "rdt": -12.372,
+   "rdt": -12.086,
    "rdt_ic": [
-    -21.854,
-    -3.598
+    -22.355,
+    -3.756
    ],
-   "jours": 45,
-   "evenements": 42
+   "jours": 46,
+   "evenements": 43
   },
   "disc|Crypto|toutes|b0": {
-   "n": 698,
+   "n": 704,
    "pertes": 51,
    "perte_ic": [
-    5.601,
-    9.48
+    5.553,
+    9.4
    ],
    "seuil": 98.141,
-   "rdt": -5.551,
+   "rdt": -5.487,
    "rdt_ic": [
-    -7.811,
-    -3.103
+    -8.171,
+    -3.364
    ],
    "jours": 96,
-   "evenements": 181
+   "evenements": 182
   },
   "disc|Crypto|toutes|b1": {
-   "n": 804,
-   "pertes": 48,
+   "n": 813,
+   "pertes": 49,
    "perte_ic": [
-    4.532,
-    7.827
+    4.589,
+    7.879
    ],
    "seuil": 99.07,
-   "rdt": -5.087,
+   "rdt": -5.145,
    "rdt_ic": [
-    -7.072,
-    -3.128
+    -7.516,
+    -3.029
    ],
    "jours": 97,
-   "evenements": 196
+   "evenements": 197
   },
   "disc|Economics|1-6h|b1": {
    "n": 31,
@@ -507,7 +507,7 @@
    "seuil": 98.143,
    "rdt": -0.372,
    "rdt_ic": [
-    -4.102,
+    -3.264,
     1.895
    ],
    "jours": 55,
@@ -523,75 +523,75 @@
    "seuil": 99.07,
    "rdt": -2.974,
    "rdt_ic": [
-    -7.944,
-    0.218
+    -8.71,
+    0.939
    ],
    "jours": 70,
    "evenements": 94
   },
   "disc|Economics|>72h|b0": {
-   "n": 59,
+   "n": 60,
    "pertes": 4,
    "perte_ic": [
-    2.668,
-    16.176
+    2.623,
+    15.925
    ],
    "seuil": 98.146,
-   "rdt": -5.019,
+   "rdt": -4.904,
    "rdt_ic": [
-    -12.224,
-    1.887
+    -12.159,
+    1.879
    ],
-   "jours": 32,
+   "jours": 33,
    "evenements": 30
   },
   "disc|Economics|>72h|b1": {
-   "n": 82,
+   "n": 85,
    "pertes": 2,
    "perte_ic": [
-    0.671,
-    8.463
+    0.648,
+    8.179
    ],
    "seuil": 99.07,
-   "rdt": -1.523,
+   "rdt": -1.436,
    "rdt_ic": [
-    -5.118,
+    -4.862,
     0.939
    ],
-   "jours": 39,
-   "evenements": 38
+   "jours": 41,
+   "evenements": 40
   },
   "disc|Economics|toutes|b0": {
-   "n": 199,
+   "n": 200,
    "pertes": 6,
    "perte_ic": [
-    1.389,
-    6.421
+    1.382,
+    6.389
    ],
    "seuil": 98.143,
-   "rdt": -1.18,
+   "rdt": -1.165,
    "rdt_ic": [
-    -3.77,
-    0.872
+    -3.988,
+    1.295
    ],
    "jours": 74,
    "evenements": 113
   },
   "disc|Economics|toutes|b1": {
-   "n": 281,
+   "n": 284,
    "pertes": 7,
    "perte_ic": [
-    1.212,
-    5.052
+    1.199,
+    4.999
    ],
    "seuil": 99.07,
-   "rdt": -1.576,
+   "rdt": -1.549,
    "rdt_ic": [
-    -4.517,
-    0.551
+    -4.172,
+    0.597
    ],
-   "jours": 80,
-   "evenements": 148
+   "jours": 81,
+   "evenements": 150
   },
   "disc|Elections|1-6h|b0": {
    "n": 60,
@@ -603,24 +603,24 @@
    "seuil": 98.473,
    "rdt": 1.551,
    "rdt_ic": [
-    1.475,
-    1.627
+    1.467,
+    1.624
    ],
    "jours": 6,
    "evenements": 41
   },
   "disc|Elections|1-6h|b1": {
-   "n": 53,
+   "n": 54,
    "pertes": 1,
    "perte_ic": [
-    0.334,
-    9.943
+    0.328,
+    9.771
    ],
-   "seuil": 99.17,
-   "rdt": -1.066,
+   "seuil": 99.168,
+   "rdt": -1.029,
    "rdt_ic": [
-    -4.859,
-    0.871
+    -5.1,
+    0.868
    ],
    "jours": 5,
    "evenements": 40
@@ -635,43 +635,43 @@
    "seuil": 99.815,
    "rdt": 0.185,
    "rdt_ic": [
-    0.159,
+    0.158,
     0.21
    ],
    "jours": 2,
    "evenements": 44
   },
   "disc|Elections|24-72h|b0": {
-   "n": 67,
+   "n": 68,
    "pertes": 1,
    "perte_ic": [
-    0.264,
-    7.982
+    0.26,
+    7.871
    ],
-   "seuil": 98.478,
-   "rdt": 0.03,
+   "seuil": 98.473,
+   "rdt": 0.057,
    "rdt_ic": [
-    -4.423,
-    1.597
+    -4.263,
+    1.615
    ],
    "jours": 15,
-   "evenements": 55
+   "evenements": 56
   },
   "disc|Elections|24-72h|b1": {
-   "n": 77,
+   "n": 78,
    "pertes": 1,
    "perte_ic": [
-    0.23,
-    6.996
+    0.227,
+    6.911
    ],
-   "seuil": 99.111,
-   "rdt": -0.413,
+   "seuil": 99.11,
+   "rdt": -0.396,
    "rdt_ic": [
-    -3.372,
-    0.913
+    -3.326,
+    0.918
    ],
    "jours": 15,
-   "evenements": 60
+   "evenements": 61
   },
   "disc|Elections|24-72h|b2": {
    "n": 48,
@@ -683,8 +683,8 @@
    "seuil": 99.788,
    "rdt": 0.213,
    "rdt_ic": [
-    0.182,
-    0.249
+    0.181,
+    0.251
    ],
    "jours": 7,
    "evenements": 35
@@ -699,8 +699,8 @@
    "seuil": 99.119,
    "rdt": 0.889,
    "rdt_ic": [
-    0.843,
-    0.925
+    0.846,
+    0.926
    ],
    "jours": 12,
    "evenements": 28
@@ -715,114 +715,114 @@
    "seuil": 99.801,
    "rdt": 0.199,
    "rdt_ic": [
-    0.155,
-    0.238
+    0.162,
+    0.247
    ],
    "jours": 8,
    "evenements": 26
   },
   "disc|Elections|<=1h|b2": {
-   "n": 32,
+   "n": 33,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    10.718
+    10.427
    ],
-   "seuil": 99.827,
-   "rdt": 0.173,
+   "seuil": 99.83,
+   "rdt": 0.17,
    "rdt_ic": [
     0.138,
-    0.21
+    0.208
    ],
    "jours": 1,
-   "evenements": 26
+   "evenements": 27
   },
   "disc|Elections|>72h|b0": {
-   "n": 99,
+   "n": 100,
    "pertes": 1,
    "perte_ic": [
-    0.179,
-    5.502
+    0.177,
+    5.449
    ],
-   "seuil": 98.446,
-   "rdt": 0.553,
+   "seuil": 98.448,
+   "rdt": 0.56,
    "rdt_ic": [
-    -1.722,
-    1.641
+    -1.628,
+    1.634
    ],
    "jours": 26,
-   "evenements": 74
+   "evenements": 75
   },
   "disc|Elections|>72h|b1": {
-   "n": 114,
+   "n": 117,
    "pertes": 1,
    "perte_ic": [
-    0.155,
-    4.802
+    0.151,
+    4.683
    ],
-   "seuil": 99.158,
-   "rdt": -0.036,
+   "seuil": 99.164,
+   "rdt": -0.019,
    "rdt_ic": [
-    -1.971,
-    0.873
+    -1.904,
+    0.867
    ],
    "jours": 29,
-   "evenements": 86
+   "evenements": 87
   },
   "disc|Elections|>72h|b2": {
-   "n": 60,
+   "n": 62,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    6.017
+    5.834
    ],
    "seuil": 99.77,
    "rdt": 0.23,
    "rdt_ic": [
     0.196,
-    0.262
+    0.265
    ],
    "jours": 15,
-   "evenements": 39
+   "evenements": 40
   },
   "disc|Elections|toutes|b0": {
-   "n": 262,
+   "n": 265,
    "pertes": 2,
    "perte_ic": [
-    0.21,
-    2.74
+    0.207,
+    2.71
    ],
    "seuil": 98.462,
-   "rdt": 0.787,
+   "rdt": 0.795,
    "rdt_ic": [
-    -0.439,
-    1.587
+    -0.279,
+    1.588
    ],
    "jours": 40,
-   "evenements": 190
+   "evenements": 193
   },
   "disc|Elections|toutes|b1": {
-   "n": 301,
+   "n": 306,
    "pertes": 3,
    "perte_ic": [
-    0.34,
-    2.889
+    0.334,
+    2.842
    ],
-   "seuil": 99.15,
-   "rdt": -0.148,
+   "seuil": 99.152,
+   "rdt": -0.133,
    "rdt_ic": [
-    -1.502,
-    0.856
+    -1.468,
+    0.855
    ],
    "jours": 42,
-   "evenements": 219
+   "evenements": 221
   },
   "disc|Elections|toutes|b2": {
-   "n": 237,
+   "n": 240,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    1.595
+    1.575
    ],
    "seuil": 99.798,
    "rdt": 0.202,
@@ -831,35 +831,35 @@
     0.22
    ],
    "jours": 23,
-   "evenements": 154
+   "evenements": 156
   },
   "disc|Entertainment|24-72h|b0": {
-   "n": 45,
+   "n": 46,
    "pertes": 1,
    "perte_ic": [
-    0.393,
-    11.567
+    0.385,
+    11.335
    ],
    "seuil": 98.14,
-   "rdt": -0.369,
+   "rdt": -0.32,
    "rdt_ic": [
-    -4.75,
+    -5.214,
     1.895
    ],
    "jours": 31,
-   "evenements": 38
+   "evenements": 39
   },
   "disc|Entertainment|24-72h|b1": {
-   "n": 48,
+   "n": 49,
    "pertes": 2,
    "perte_ic": [
-    1.15,
-    13.976
+    1.127,
+    13.713
    ],
    "seuil": 99.07,
-   "rdt": -3.267,
+   "rdt": -3.181,
    "rdt_ic": [
-    -10.277,
+    -10.033,
     0.939
    ],
    "jours": 33,
@@ -882,67 +882,67 @@
    "evenements": 26
   },
   "disc|Entertainment|>72h|b0": {
-   "n": 141,
+   "n": 142,
    "pertes": 5,
    "perte_ic": [
-    1.524,
-    8.032
+    1.513,
+    7.978
    ],
    "seuil": 98.14,
-   "rdt": -1.718,
+   "rdt": -1.693,
    "rdt_ic": [
-    -4.679,
-    1.178
+    -4.99,
+    1.162
    ],
-   "jours": 58,
-   "evenements": 79
+   "jours": 59,
+   "evenements": 80
   },
   "disc|Entertainment|>72h|b1": {
-   "n": 191,
+   "n": 193,
    "pertes": 4,
    "perte_ic": [
-    0.817,
-    5.26
+    0.809,
+    5.207
    ],
    "seuil": 99.07,
-   "rdt": -1.175,
+   "rdt": -1.153,
    "rdt_ic": [
-    -3.604,
-    0.449
+    -3.367,
+    0.413
    ],
-   "jours": 67,
-   "evenements": 94
+   "jours": 68,
+   "evenements": 96
   },
   "disc|Entertainment|toutes|b0": {
-   "n": 207,
+   "n": 209,
    "pertes": 6,
    "perte_ic": [
-    1.335,
-    6.178
+    1.322,
+    6.121
    ],
    "seuil": 98.14,
-   "rdt": -1.058,
+   "rdt": -1.03,
    "rdt_ic": [
-    -3.583,
-    0.938
+    -3.493,
+    0.977
    ],
-   "jours": 78,
-   "evenements": 108
+   "jours": 79,
+   "evenements": 109
   },
   "disc|Entertainment|toutes|b1": {
-   "n": 282,
+   "n": 285,
    "pertes": 6,
    "perte_ic": [
-    0.979,
-    4.563
+    0.968,
+    4.516
    ],
    "seuil": 99.07,
-   "rdt": -1.209,
+   "rdt": -1.186,
    "rdt_ic": [
-    -3.035,
-    0.261
+    -2.959,
+    0.23
    ],
-   "jours": 87,
+   "jours": 88,
    "evenements": 128
   },
   "disc|Financials|1-6h|b0": {
@@ -955,39 +955,39 @@
    "seuil": 98.14,
    "rdt": -13.543,
    "rdt_ic": [
-    -29.457,
-    -1.289
+    -28.074,
+    -1.192
    ],
    "jours": 23,
    "evenements": 30
   },
   "disc|Financials|1-6h|b1": {
-   "n": 69,
+   "n": 70,
    "pertes": 7,
    "perte_ic": [
-    5.002,
-    19.492
+    4.929,
+    19.233
    ],
    "seuil": 99.07,
-   "rdt": -9.301,
+   "rdt": -9.155,
    "rdt_ic": [
-    -17.178,
-    -1.987
+    -16.874,
+    -2.266
    ],
    "jours": 27,
-   "evenements": 52
+   "evenements": 53
   },
   "disc|Financials|6-24h|b0": {
-   "n": 40,
+   "n": 41,
    "pertes": 5,
    "perte_ic": [
-    5.46,
-    26.112
+    5.323,
+    25.544
    ],
    "seuil": 98.14,
-   "rdt": -10.842,
+   "rdt": -10.531,
    "rdt_ic": [
-    -26.126,
+    -25.538,
     -0.652
    ],
    "jours": 16,
@@ -1003,8 +1003,8 @@
    "seuil": 99.07,
    "rdt": -11.296,
    "rdt_ic": [
-    -24.724,
-    -4.108
+    -23.882,
+    -4.775
    ],
    "jours": 27,
    "evenements": 36
@@ -1019,18 +1019,18 @@
    "seuil": 99.07,
    "rdt": -6.826,
    "rdt_ic": [
-    -15.884,
+    -16.365,
     0.939
    ],
    "jours": 20,
    "evenements": 33
   },
   "disc|Financials|>72h|b0": {
-   "n": 36,
+   "n": 38,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    9.642
+    9.181
    ],
    "seuil": 98.14,
    "rdt": 1.895,
@@ -1038,84 +1038,84 @@
     1.895,
     1.895
    ],
-   "jours": 19,
-   "evenements": 30
+   "jours": 20,
+   "evenements": 31
   },
   "disc|Financials|>72h|b1": {
-   "n": 58,
+   "n": 60,
    "pertes": 1,
    "perte_ic": [
-    0.305,
-    9.141
+    0.295,
+    8.855
    ],
    "seuil": 99.07,
-   "rdt": -0.802,
+   "rdt": -0.744,
    "rdt_ic": [
     -4.885,
     0.939
    ],
-   "jours": 24,
-   "evenements": 44
+   "jours": 25,
+   "evenements": 45
   },
   "disc|Financials|toutes|b0": {
-   "n": 133,
+   "n": 136,
    "pertes": 12,
    "perte_ic": [
-    5.237,
-    15.109
+    5.119,
+    14.79
    ],
    "seuil": 98.14,
-   "rdt": -7.298,
+   "rdt": -7.096,
    "rdt_ic": [
-    -13.485,
-    -1.24
+    -12.563,
+    -1.797
    ],
    "jours": 47,
-   "evenements": 86
+   "evenements": 87
   },
   "disc|Financials|toutes|b1": {
-   "n": 253,
+   "n": 256,
    "pertes": 21,
    "perte_ic": [
-    5.493,
-    12.355
+    5.428,
+    12.214
    ],
    "seuil": 99.07,
-   "rdt": -7.44,
+   "rdt": -7.341,
    "rdt_ic": [
-    -11.769,
-    -3.684
+    -11.1,
+    -3.418
    ],
-   "jours": 59,
-   "evenements": 148
+   "jours": 60,
+   "evenements": 149
   },
   "disc|Mentions|24-72h|b0": {
-   "n": 66,
+   "n": 67,
    "pertes": 1,
    "perte_ic": [
-    0.268,
-    8.096
+    0.264,
+    7.982
    ],
    "seuil": 98.14,
-   "rdt": 0.351,
+   "rdt": 0.374,
    "rdt_ic": [
-    -2.808,
+    -2.6,
     1.895
    ],
    "jours": 43,
    "evenements": 39
   },
   "disc|Mentions|24-72h|b1": {
-   "n": 56,
+   "n": 57,
    "pertes": 3,
    "perte_ic": [
-    1.839,
-    14.607
+    1.806,
+    14.37
    ],
    "seuil": 99.07,
-   "rdt": -4.469,
+   "rdt": -4.374,
    "rdt_ic": [
-    -15.579,
+    -13.714,
     0.939
    ],
    "jours": 31,
@@ -1131,7 +1131,7 @@
    "seuil": 98.14,
    "rdt": 0.008,
    "rdt_ic": [
-    -3.872,
+    -4.473,
     1.895
    ],
    "jours": 35,
@@ -1163,7 +1163,7 @@
    "seuil": 98.14,
    "rdt": -2.844,
    "rdt_ic": [
-    -9.426,
+    -10.582,
     1.895
    ],
    "jours": 32,
@@ -1179,39 +1179,39 @@
    "seuil": 99.07,
    "rdt": -1.649,
    "rdt_ic": [
-    -7.713,
+    -7.968,
     0.939
    ],
    "jours": 27,
    "evenements": 32
   },
   "disc|Mentions|toutes|b0": {
-   "n": 168,
+   "n": 169,
    "pertes": 4,
    "perte_ic": [
-    0.93,
-    5.961
+    0.924,
+    5.927
    ],
    "seuil": 98.14,
-   "rdt": -0.531,
+   "rdt": -0.516,
    "rdt_ic": [
-    -3.65,
+    -3.554,
     1.895
    ],
    "jours": 70,
    "evenements": 64
   },
   "disc|Mentions|toutes|b1": {
-   "n": 179,
+   "n": 180,
    "pertes": 4,
    "perte_ic": [
-    0.872,
-    5.604
+    0.867,
+    5.574
    ],
    "seuil": 99.07,
-   "rdt": -1.317,
+   "rdt": -1.304,
    "rdt_ic": [
-    -5.337,
+    -5.47,
     0.939
    ],
    "jours": 68,
@@ -1227,43 +1227,43 @@
    "seuil": 98.14,
    "rdt": -1.501,
    "rdt_ic": [
-    -9.426,
+    -8.646,
     1.895
    ],
    "jours": 21,
    "evenements": 24
   },
   "disc|Politics|1-6h|b1": {
-   "n": 75,
+   "n": 76,
    "pertes": 2,
    "perte_ic": [
-    0.734,
-    9.211
+    0.725,
+    9.097
    ],
    "seuil": 99.076,
-   "rdt": -1.759,
+   "rdt": -1.724,
    "rdt_ic": [
-    -5.227,
+    -4.669,
     0.939
    ],
    "jours": 38,
    "evenements": 42
   },
   "disc|Politics|24-72h|b0": {
-   "n": 64,
+   "n": 66,
    "pertes": 7,
    "perte_ic": [
-    5.4,
-    20.899
+    5.233,
+    20.312
    ],
    "seuil": 98.153,
-   "rdt": -9.262,
+   "rdt": -8.924,
    "rdt_ic": [
-    -16.491,
-    -2.535
+    -15.349,
+    -1.515
    ],
    "jours": 42,
-   "evenements": 53
+   "evenements": 54
   },
   "disc|Politics|24-72h|b1": {
    "n": 65,
@@ -1275,7 +1275,7 @@
    "seuil": 99.074,
    "rdt": -2.171,
    "rdt_ic": [
-    -7.482,
+    -6.83,
     0.939
    ],
    "jours": 41,
@@ -1291,88 +1291,88 @@
    "seuil": 98.14,
    "rdt": -0.027,
    "rdt_ic": [
-    -3.872,
+    -3.766,
     1.895
    ],
    "jours": 36,
    "evenements": 43
   },
   "disc|Politics|6-24h|b1": {
-   "n": 59,
+   "n": 60,
    "pertes": 1,
    "perte_ic": [
-    0.3,
-    8.996
+    0.295,
+    8.855
    ],
    "seuil": 99.07,
-   "rdt": -0.772,
+   "rdt": -0.744,
    "rdt_ic": [
-    -4.885,
+    -4.567,
     0.939
    ],
-   "jours": 37,
-   "evenements": 44
+   "jours": 38,
+   "evenements": 45
   },
   "disc|Politics|>72h|b0": {
-   "n": 82,
+   "n": 84,
    "pertes": 6,
    "perte_ic": [
-    3.396,
-    15.058
+    3.315,
+    14.72
    ],
-   "seuil": 98.208,
-   "rdt": -5.626,
+   "seuil": 98.207,
+   "rdt": -5.447,
    "rdt_ic": [
-    -10.896,
-    -0.729
+    -11.652,
+    -0.48
    ],
    "jours": 50,
-   "evenements": 62
+   "evenements": 63
   },
   "disc|Politics|>72h|b1": {
-   "n": 91,
+   "n": 92,
    "pertes": 6,
    "perte_ic": [
-    3.057,
-    13.646
+    3.023,
+    13.506
    ],
-   "seuil": 99.09,
-   "rdt": -5.735,
+   "seuil": 99.089,
+   "rdt": -5.663,
    "rdt_ic": [
-    -10.683,
-    -0.313
+    -10.162,
+    -1.301
    ],
    "jours": 46,
-   "evenements": 69
+   "evenements": 70
   },
   "disc|Politics|toutes|b0": {
-   "n": 235,
+   "n": 239,
    "pertes": 15,
    "perte_ic": [
-    3.906,
-    10.263
+    3.84,
+    10.096
    ],
    "seuil": 98.167,
-   "rdt": -4.635,
+   "rdt": -4.526,
    "rdt_ic": [
-    -8.063,
-    -2.04
+    -8.178,
+    -1.835
    ],
    "jours": 71,
-   "evenements": 139
+   "evenements": 140
   },
   "disc|Politics|toutes|b1": {
-   "n": 309,
+   "n": 312,
    "pertes": 12,
    "perte_ic": [
-    2.235,
-    6.664
+    2.214,
+    6.601
    ],
    "seuil": 99.078,
-   "rdt": -2.989,
+   "rdt": -2.952,
    "rdt_ic": [
-    -5.188,
-    -1.014
+    -4.876,
+    -1.111
    ],
    "jours": 72,
    "evenements": 154
@@ -1403,8 +1403,8 @@
    "seuil": 98.14,
    "rdt": -6.596,
    "rdt_ic": [
-    -15.618,
-    0.328
+    -15.826,
+    0.303
    ],
    "jours": 36,
    "evenements": 41
@@ -1419,8 +1419,8 @@
    "seuil": 99.07,
    "rdt": -7.615,
    "rdt_ic": [
-    -16.97,
-    -0.591
+    -17.086,
+    -0.744
    ],
    "jours": 38,
    "evenements": 41
@@ -1435,8 +1435,8 @@
    "seuil": 98.14,
    "rdt": -3.643,
    "rdt_ic": [
-    -9.302,
-    0.866
+    -10.456,
+    0.915
    ],
    "jours": 49,
    "evenements": 52
@@ -1451,123 +1451,123 @@
    "seuil": 99.07,
    "rdt": -3.375,
    "rdt_ic": [
-    -7.944,
-    0.111
+    -7.881,
+    0.037
    ],
    "jours": 55,
    "evenements": 61
   },
   "disc|Sports|1-6h|b0": {
-   "n": 1647,
+   "n": 1668,
    "pertes": 116,
    "perte_ic": [
-    5.905,
-    8.381
+    5.83,
+    8.277
    ],
-   "seuil": 98.144,
-   "rdt": -5.286,
+   "seuil": 98.145,
+   "rdt": -5.195,
    "rdt_ic": [
-    -6.829,
-    -4.059
+    -6.728,
+    -3.868
    ],
    "jours": 92,
-   "evenements": 1369
+   "evenements": 1379
   },
   "disc|Sports|1-6h|b1": {
-   "n": 1500,
-   "pertes": 61,
+   "n": 1527,
+   "pertes": 64,
    "perte_ic": [
-    3.179,
-    5.189
+    3.296,
+    5.317
    ],
-   "seuil": 99.072,
-   "rdt": -3.168,
+   "seuil": 99.071,
+   "rdt": -3.293,
    "rdt_ic": [
-    -4.266,
-    -1.959
+    -4.626,
+    -2.141
    ],
    "jours": 91,
-   "evenements": 1242
+   "evenements": 1264
   },
   "disc|Sports|24-72h|b0": {
-   "n": 722,
-   "pertes": 38,
+   "n": 732,
+   "pertes": 39,
    "perte_ic": [
-    3.858,
-    7.142
+    3.922,
+    7.2
    ],
    "seuil": 98.265,
-   "rdt": -3.591,
+   "rdt": -3.656,
    "rdt_ic": [
-    -5.343,
-    -2.046
+    -5.477,
+    -2.012
    ],
    "jours": 89,
-   "evenements": 527
+   "evenements": 533
   },
   "disc|Sports|24-72h|b1": {
-   "n": 722,
+   "n": 735,
    "pertes": 44,
    "perte_ic": [
-    4.571,
-    8.082
+    4.489,
+    7.941
    ],
    "seuil": 99.147,
-   "rdt": -5.286,
+   "rdt": -5.178,
    "rdt_ic": [
-    -7.263,
-    -3.559
+    -6.947,
+    -3.465
    ],
    "jours": 87,
-   "evenements": 450
+   "evenements": 459
   },
   "disc|Sports|24-72h|b2": {
-   "n": 204,
+   "n": 206,
    "pertes": 5,
    "perte_ic": [
-    1.051,
-    5.608
+    1.041,
+    5.555
    ],
-   "seuil": 99.827,
-   "rdt": -2.282,
+   "seuil": 99.828,
+   "rdt": -2.259,
    "rdt_ic": [
-    -3.944,
-    -0.47
+    -3.919,
+    -0.576
    ],
-   "jours": 54,
+   "jours": 55,
    "evenements": 41
   },
   "disc|Sports|6-24h|b0": {
-   "n": 520,
-   "pertes": 42,
+   "n": 532,
+   "pertes": 43,
    "perte_ic": [
-    6.031,
-    10.738
+    6.056,
+    10.711
    ],
-   "seuil": 98.178,
-   "rdt": -6.371,
+   "seuil": 98.177,
+   "rdt": -6.376,
    "rdt_ic": [
-    -9.156,
-    -4.104
+    -8.965,
+    -3.895
    ],
    "jours": 92,
-   "evenements": 450
+   "evenements": 460
   },
   "disc|Sports|6-24h|b1": {
-   "n": 449,
+   "n": 452,
    "pertes": 26,
    "perte_ic": [
-    3.982,
-    8.349
+    3.955,
+    8.295
    ],
    "seuil": 99.103,
-   "rdt": -4.938,
+   "rdt": -4.899,
    "rdt_ic": [
-    -7.034,
-    -3.132
+    -7.106,
+    -2.828
    ],
    "jours": 87,
-   "evenements": 366
+   "evenements": 368
   },
   "disc|Sports|6-24h|b2": {
    "n": 43,
@@ -1579,267 +1579,267 @@
    "seuil": 99.84,
    "rdt": 0.16,
    "rdt_ic": [
-    0.129,
-    0.192
+    0.134,
+    0.19
    ],
    "jours": 17,
    "evenements": 21
   },
   "disc|Sports|<=1h|b0": {
-   "n": 2363,
+   "n": 2400,
    "pertes": 55,
    "perte_ic": [
-    1.793,
-    3.017
+    1.765,
+    2.971
    ],
    "seuil": 98.141,
-   "rdt": -0.477,
+   "rdt": -0.441,
    "rdt_ic": [
-    -1.219,
-    0.074
+    -1.077,
+    0.155
    ],
    "jours": 91,
-   "evenements": 2032
+   "evenements": 2060
   },
   "disc|Sports|<=1h|b1": {
-   "n": 3150,
+   "n": 3195,
    "pertes": 40,
    "perte_ic": [
-    0.934,
-    1.724
+    0.921,
+    1.7
    ],
    "seuil": 99.071,
-   "rdt": -0.344,
+   "rdt": -0.326,
    "rdt_ic": [
-    -0.805,
-    0.044
+    -0.798,
+    0.057
    ],
    "jours": 91,
-   "evenements": 2583
+   "evenements": 2618
   },
   "disc|Sports|>72h|b0": {
-   "n": 1101,
-   "pertes": 64,
+   "n": 1117,
+   "pertes": 65,
    "perte_ic": [
-    4.578,
-    7.355
+    4.592,
+    7.349
    ],
    "seuil": 98.324,
-   "rdt": -4.208,
+   "rdt": -4.213,
    "rdt_ic": [
-    -5.747,
-    -2.952
+    -5.693,
+    -2.946
    ],
    "jours": 91,
-   "evenements": 546
+   "evenements": 552
   },
   "disc|Sports|>72h|b1": {
-   "n": 1417,
-   "pertes": 55,
+   "n": 1437,
+   "pertes": 56,
    "perte_ic": [
-    2.994,
-    5.018
+    3.013,
+    5.027
    ],
-   "seuil": 99.161,
-   "rdt": -3.068,
+   "seuil": 99.16,
+   "rdt": -3.083,
    "rdt_ic": [
-    -4.14,
-    -2.149
+    -4.074,
+    -2.049
    ],
    "jours": 91,
-   "evenements": 582
+   "evenements": 586
   },
   "disc|Sports|>72h|b2": {
-   "n": 739,
+   "n": 747,
    "pertes": 17,
    "perte_ic": [
-    1.441,
-    3.653
+    1.426,
+    3.614
    ],
    "seuil": 99.855,
-   "rdt": -2.158,
+   "rdt": -2.134,
    "rdt_ic": [
-    -3.048,
-    -1.474
+    -2.964,
+    -1.365
    ],
    "jours": 53,
    "evenements": 40
   },
   "disc|Sports|toutes|b0": {
-   "n": 6353,
-   "pertes": 315,
+   "n": 6449,
+   "pertes": 318,
    "perte_ic": [
-    4.451,
-    5.52
+    4.429,
+    5.487
    ],
-   "seuil": 98.191,
-   "rdt": -3.207,
+   "seuil": 98.19,
+   "rdt": -3.179,
    "rdt_ic": [
-    -3.722,
-    -2.684
+    -3.749,
+    -2.658
    ],
    "jours": 96,
-   "evenements": 4364
+   "evenements": 4417
   },
   "disc|Sports|toutes|b1": {
-   "n": 7238,
-   "pertes": 226,
+   "n": 7346,
+   "pertes": 230,
    "perte_ic": [
-    2.746,
-    3.549
+    2.757,
+    3.554
    ],
    "seuil": 99.098,
-   "rdt": -2.241,
+   "rdt": -2.249,
    "rdt_ic": [
-    -2.651,
-    -1.813
+    -2.644,
+    -1.805
    ],
    "jours": 95,
-   "evenements": 4648
+   "evenements": 4709
   },
   "disc|Sports|toutes|b2": {
-   "n": 1016,
+   "n": 1027,
    "pertes": 22,
    "perte_ic": [
-    1.434,
-    3.257
+    1.419,
+    3.222
    ],
    "seuil": 99.848,
-   "rdt": -2.016,
+   "rdt": -1.993,
    "rdt_ic": [
-    -2.716,
-    -1.357
+    -2.707,
+    -1.394
    ],
-   "jours": 83,
+   "jours": 84,
    "evenements": 50
   },
   "disc|TOUT|1-6h|b0": {
-   "n": 2080,
+   "n": 2109,
    "pertes": 135,
    "perte_ic": [
-    5.51,
-    7.631
+    5.434,
+    7.527
    ],
    "seuil": 98.153,
-   "rdt": -4.731,
+   "rdt": -4.64,
    "rdt_ic": [
-    -6.061,
-    -3.559
+    -5.712,
+    -3.439
    ],
    "jours": 92,
-   "evenements": 1647
+   "evenements": 1658
   },
   "disc|TOUT|1-6h|b1": {
-   "n": 2193,
-   "pertes": 80,
+   "n": 2229,
+   "pertes": 83,
    "perte_ic": [
-    2.941,
-    4.517
+    3.014,
+    4.593
    ],
    "seuil": 99.074,
-   "rdt": -2.747,
+   "rdt": -2.823,
    "rdt_ic": [
-    -3.734,
-    -1.837
+    -3.68,
+    -2.058
    ],
    "jours": 91,
-   "evenements": 1648
+   "evenements": 1673
   },
   "disc|TOUT|1-6h|b2": {
-   "n": 89,
+   "n": 90,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    4.138
+    4.094
    ],
-   "seuil": 99.812,
-   "rdt": 0.189,
+   "seuil": 99.813,
+   "rdt": 0.188,
    "rdt_ic": [
-    0.168,
-    0.212
+    0.166,
+    0.208
    ],
    "jours": 18,
    "evenements": 61
   },
   "disc|TOUT|24-72h|b0": {
-   "n": 1303,
-   "pertes": 78,
-   "perte_ic": [
-    4.823,
-    7.408
-   ],
-   "seuil": 98.227,
-   "rdt": -4.29,
-   "rdt_ic": [
-    -5.641,
-    -2.918
-   ],
-   "jours": 91,
-   "evenements": 941
-  },
-  "disc|TOUT|24-72h|b1": {
-   "n": 1329,
+   "n": 1320,
    "pertes": 79,
    "perte_ic": [
-    4.796,
-    7.347
+    4.828,
+    7.397
    ],
-   "seuil": 99.114,
-   "rdt": -5.104,
+   "seuil": 98.227,
+   "rdt": -4.288,
    "rdt_ic": [
-    -6.659,
-    -3.836
+    -5.711,
+    -3.012
+   ],
+   "jours": 91,
+   "evenements": 950
+  },
+  "disc|TOUT|24-72h|b1": {
+   "n": 1347,
+   "pertes": 79,
+   "perte_ic": [
+    4.731,
+    7.25
+   ],
+   "seuil": 99.115,
+   "rdt": -5.024,
+   "rdt_ic": [
+    -6.352,
+    -3.864
    ],
    "jours": 92,
-   "evenements": 867
+   "evenements": 877
   },
   "disc|TOUT|24-72h|b2": {
-   "n": 257,
+   "n": 259,
    "pertes": 5,
    "perte_ic": [
-    0.834,
-    4.473
+    0.827,
+    4.439
    ],
-   "seuil": 99.82,
-   "rdt": -1.769,
+   "seuil": 99.821,
+   "rdt": -1.754,
    "rdt_ic": [
-    -3.016,
-    -0.357
+    -3.162,
+    -0.355
    ],
-   "jours": 58,
+   "jours": 59,
    "evenements": 78
   },
   "disc|TOUT|6-24h|b0": {
-   "n": 1340,
-   "pertes": 85,
+   "n": 1363,
+   "pertes": 86,
    "perte_ic": [
-    5.159,
-    7.777
+    5.138,
+    7.727
    ],
    "seuil": 98.158,
-   "rdt": -4.586,
+   "rdt": -4.552,
    "rdt_ic": [
-    -6.028,
-    -3.118
+    -5.953,
+    -3.367
    ],
    "jours": 92,
-   "evenements": 964
+   "evenements": 978
   },
   "disc|TOUT|6-24h|b1": {
-   "n": 1355,
-   "pertes": 76,
+   "n": 1366,
+   "pertes": 77,
    "perte_ic": [
-    4.505,
-    6.964
+    4.534,
+    6.989
    ],
    "seuil": 99.082,
-   "rdt": -4.734,
+   "rdt": -4.762,
    "rdt_ic": [
-    -6.125,
-    -3.35
+    -6.265,
+    -3.4
    ],
    "jours": 92,
-   "evenements": 942
+   "evenements": 948
   },
   "disc|TOUT|6-24h|b2": {
    "n": 75,
@@ -1851,203 +1851,203 @@
    "seuil": 99.823,
    "rdt": 0.177,
    "rdt_ic": [
-    0.152,
-    0.202
+    0.153,
+    0.204
    ],
    "jours": 24,
    "evenements": 47
   },
   "disc|TOUT|<=1h|b0": {
-   "n": 2471,
+   "n": 2508,
    "pertes": 56,
    "perte_ic": [
-    1.749,
-    2.931
+    1.724,
+    2.888
    ],
    "seuil": 98.144,
-   "rdt": -0.418,
+   "rdt": -0.384,
    "rdt_ic": [
-    -1.119,
-    0.225
+    -1.006,
+    0.184
    ],
    "jours": 91,
-   "evenements": 2132
+   "evenements": 2160
   },
   "disc|TOUT|<=1h|b1": {
-   "n": 3373,
+   "n": 3420,
    "pertes": 44,
    "perte_ic": [
-    0.973,
-    1.747
+    0.96,
+    1.723
    ],
    "seuil": 99.072,
-   "rdt": -0.38,
+   "rdt": -0.362,
    "rdt_ic": [
-    -0.867,
-    0.015
+    -0.809,
+    -0.005
    ],
    "jours": 91,
-   "evenements": 2780
+   "evenements": 2817
   },
   "disc|TOUT|<=1h|b2": {
-   "n": 89,
+   "n": 91,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    4.138
+    4.05
    ],
-   "seuil": 99.864,
-   "rdt": 0.136,
+   "seuil": 99.865,
+   "rdt": 0.135,
    "rdt_ic": [
-    0.122,
-    0.151
+    0.117,
+    0.148
    ],
    "jours": 30,
-   "evenements": 78
+   "evenements": 80
   },
   "disc|TOUT|>72h|b0": {
-   "n": 1746,
-   "pertes": 109,
+   "n": 1771,
+   "pertes": 110,
    "perte_ic": [
-    5.201,
-    7.477
+    5.179,
+    7.433
    ],
    "seuil": 98.277,
-   "rdt": -4.599,
+   "rdt": -4.566,
    "rdt_ic": [
-    -5.887,
-    -3.388
+    -5.959,
+    -3.419
    ],
    "jours": 94,
-   "evenements": 946
+   "evenements": 957
   },
   "disc|TOUT|>72h|b1": {
-   "n": 2181,
-   "pertes": 96,
+   "n": 2214,
+   "pertes": 97,
    "perte_ic": [
-    3.618,
-    5.346
+    3.605,
+    5.316
    ],
    "seuil": 99.134,
-   "rdt": -3.567,
+   "rdt": -3.546,
    "rdt_ic": [
-    -4.591,
-    -2.657
+    -4.67,
+    -2.615
    ],
    "jours": 94,
-   "evenements": 1047
+   "evenements": 1059
   },
   "disc|TOUT|>72h|b2": {
-   "n": 812,
+   "n": 822,
    "pertes": 17,
    "perte_ic": [
-    1.311,
-    3.327
+    1.295,
+    3.287
    ],
    "seuil": 99.848,
-   "rdt": -1.944,
+   "rdt": -1.919,
    "rdt_ic": [
-    -2.704,
-    -1.265
+    -2.797,
+    -1.327
    ],
    "jours": 62,
-   "evenements": 87
+   "evenements": 88
   },
   "disc|TOUT|toutes|b0": {
-   "n": 8940,
-   "pertes": 463,
+   "n": 9071,
+   "pertes": 466,
    "perte_ic": [
-    4.739,
-    5.658
+    4.702,
+    5.611
    ],
    "seuil": 98.186,
-   "rdt": -3.427,
+   "rdt": -3.385,
    "rdt_ic": [
-    -3.952,
-    -2.874
+    -3.942,
+    -2.92
    ],
    "jours": 97,
-   "evenements": 5637
+   "evenements": 5698
   },
   "disc|TOUT|toutes|b1": {
-   "n": 10431,
-   "pertes": 375,
+   "n": 10576,
+   "pertes": 380,
    "perte_ic": [
     3.255,
-    3.97
+    3.965
    ],
    "seuil": 99.092,
-   "rdt": -2.712,
+   "rdt": -2.71,
    "rdt_ic": [
-    -3.114,
-    -2.32
+    -3.101,
+    -2.301
    ],
    "jours": 97,
-   "evenements": 6143
+   "evenements": 6210
   },
   "disc|TOUT|toutes|b2": {
-   "n": 1322,
+   "n": 1337,
    "pertes": 22,
    "perte_ic": [
-    1.102,
-    2.507
+    1.089,
+    2.479
    ],
    "seuil": 99.84,
-   "rdt": -1.506,
+   "rdt": -1.488,
    "rdt_ic": [
-    -2.028,
-    -0.98
+    -2.025,
+    -1.012
    ],
    "jours": 89,
-   "evenements": 261
+   "evenements": 264
   },
   "disc|TOUT|vol<2,34M (tirage)|b0": {
-   "n": 8738,
-   "pertes": 456,
+   "n": 8869,
+   "pertes": 459,
    "perte_ic": [
-    4.772,
-    5.705
+    4.733,
+    5.656
    ],
    "seuil": 98.184,
-   "rdt": -3.466,
+   "rdt": -3.421,
    "rdt_ic": [
-    -4.09,
-    -2.984
+    -3.931,
+    -2.957
    ],
    "jours": 97,
-   "evenements": 5543
+   "evenements": 5605
   },
   "disc|TOUT|vol<2,34M (tirage)|b1": {
-   "n": 10196,
-   "pertes": 368,
+   "n": 10341,
+   "pertes": 373,
    "perte_ic": [
     3.264,
-    3.989
+    3.984
    ],
    "seuil": 99.091,
-   "rdt": -2.725,
+   "rdt": -2.723,
    "rdt_ic": [
-    -3.183,
-    -2.349
+    -3.094,
+    -2.352
    ],
    "jours": 97,
-   "evenements": 6038
+   "evenements": 6107
   },
   "disc|TOUT|vol<2,34M (tirage)|b2": {
-   "n": 1255,
+   "n": 1270,
    "pertes": 21,
    "perte_ic": [
-    1.097,
-    2.545
+    1.084,
+    2.515
    ],
    "seuil": 99.843,
-   "rdt": -1.519,
+   "rdt": -1.499,
    "rdt_ic": [
-    -2.121,
-    -0.98
+    -2.0,
+    -0.991
    ],
    "jours": 85,
-   "evenements": 240
+   "evenements": 243
   },
   "disc|TOUT|vol>=2,34M (tous)|b0": {
    "n": 202,
@@ -2059,8 +2059,8 @@
    "seuil": 98.282,
    "rdt": -1.778,
    "rdt_ic": [
-    -5.838,
-    1.256
+    -5.266,
+    0.831
    ],
    "jours": 67,
    "evenements": 127
@@ -2075,8 +2075,8 @@
    "seuil": 99.126,
    "rdt": -2.123,
    "rdt_ic": [
-    -5.289,
-    0.446
+    -5.082,
+    0.073
    ],
    "jours": 70,
    "evenements": 157
@@ -2091,123 +2091,123 @@
    "seuil": 99.777,
    "rdt": -1.273,
    "rdt_ic": [
-    -5.66,
-    0.254
+    -5.001,
+    0.252
    ],
    "jours": 30,
    "evenements": 26
   },
   "val|Climate and Weather|24-72h|b0": {
-   "n": 142,
+   "n": 144,
    "pertes": 17,
    "perte_ic": [
-    7.61,
-    18.337
+    7.503,
+    18.093
    ],
    "seuil": 98.14,
-   "rdt": -10.303,
+   "rdt": -10.134,
    "rdt_ic": [
     -15.795,
-    -5.084
+    -5.23
    ],
    "jours": 75,
-   "evenements": 127
+   "evenements": 128
   },
   "val|Climate and Weather|24-72h|b1": {
-   "n": 102,
+   "n": 103,
    "pertes": 12,
    "perte_ic": [
-    6.859,
-    19.445
+    6.792,
+    19.267
    ],
    "seuil": 99.07,
-   "rdt": -10.936,
+   "rdt": -10.821,
    "rdt_ic": [
-    -17.601,
-    -5.179
+    -17.326,
+    -4.885
    ],
    "jours": 62,
-   "evenements": 93
+   "evenements": 94
   },
   "val|Climate and Weather|6-24h|b0": {
-   "n": 221,
-   "pertes": 15,
+   "n": 224,
+   "pertes": 16,
    "perte_ic": [
-    4.156,
-    10.895
+    4.444,
+    11.287
    ],
    "seuil": 98.14,
-   "rdt": -5.021,
+   "rdt": -5.383,
    "rdt_ic": [
-    -8.661,
-    -1.777
+    -8.855,
+    -1.81
    ],
    "jours": 83,
-   "evenements": 191
+   "evenements": 193
   },
   "val|Climate and Weather|6-24h|b1": {
-   "n": 206,
+   "n": 209,
    "pertes": 5,
    "perte_ic": [
-    1.041,
-    5.555
+    1.026,
+    5.477
    ],
    "seuil": 99.07,
-   "rdt": -1.511,
+   "rdt": -1.476,
    "rdt_ic": [
-    -3.8,
-    0.451
+    -3.559,
+    0.46
    ],
    "jours": 78,
-   "evenements": 171
+   "evenements": 172
   },
   "val|Climate and Weather|toutes|b0": {
-   "n": 396,
-   "pertes": 34,
+   "n": 401,
+   "pertes": 35,
    "perte_ic": [
-    6.209,
-    11.758
+    6.343,
+    11.897
    ],
    "seuil": 98.14,
-   "rdt": -6.853,
+   "rdt": -6.998,
    "rdt_ic": [
-    -10.109,
-    -3.92
+    -9.729,
+    -4.41
    ],
    "jours": 93,
-   "evenements": 299
+   "evenements": 302
   },
   "val|Climate and Weather|toutes|b1": {
-   "n": 348,
+   "n": 353,
    "pertes": 18,
    "perte_ic": [
-    3.297,
-    8.027
+    3.249,
+    7.916
    ],
    "seuil": 99.07,
-   "rdt": -4.282,
+   "rdt": -4.208,
    "rdt_ic": [
-    -6.915,
-    -2.021
+    -6.548,
+    -1.962
    ],
    "jours": 91,
-   "evenements": 247
+   "evenements": 250
   },
   "val|Commodities|1-6h|b0": {
-   "n": 72,
+   "n": 73,
    "pertes": 3,
    "perte_ic": [
-    1.427,
-    11.549
+    1.407,
+    11.4
    ],
    "seuil": 98.14,
-   "rdt": -2.35,
+   "rdt": -2.292,
    "rdt_ic": [
-    -9.75,
+    -9.426,
     1.895
    ],
-   "jours": 41,
-   "evenements": 46
+   "jours": 42,
+   "evenements": 47
   },
   "val|Commodities|1-6h|b1": {
    "n": 86,
@@ -2219,50 +2219,50 @@
    "seuil": 99.07,
    "rdt": -4.93,
    "rdt_ic": [
-    -11.838,
-    -0.102
+    -11.537,
+    -0.135
    ],
    "jours": 46,
    "evenements": 52
   },
   "val|Commodities|24-72h|b0": {
-   "n": 37,
+   "n": 38,
    "pertes": 6,
    "perte_ic": [
-    7.651,
-    31.136
+    7.444,
+    30.417
    ],
    "seuil": 98.14,
-   "rdt": -14.628,
+   "rdt": -14.193,
    "rdt_ic": [
-    -25.644,
-    -3.766
+    -25.894,
+    -3.613
    ],
    "jours": 22,
-   "evenements": 23
+   "evenements": 24
   },
   "val|Commodities|6-24h|b0": {
-   "n": 42,
+   "n": 43,
    "pertes": 5,
    "perte_ic": [
-    5.194,
-    25.0
+    5.07,
+    24.479
    ],
    "seuil": 98.14,
-   "rdt": -10.235,
+   "rdt": -9.953,
    "rdt_ic": [
     -19.939,
-    -0.717
+    -0.786
    ],
-   "jours": 29,
-   "evenements": 32
+   "jours": 30,
+   "evenements": 33
   },
   "val|Commodities|6-24h|b1": {
-   "n": 31,
+   "n": 32,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    11.026
+    10.718
    ],
    "seuil": 99.07,
    "rdt": 0.939,
@@ -2270,15 +2270,15 @@
     0.939,
     0.939
    ],
-   "jours": 23,
-   "evenements": 27
+   "jours": 24,
+   "evenements": 28
   },
   "val|Commodities|<=1h|b1": {
-   "n": 61,
+   "n": 62,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    5.924
+    5.834
    ],
    "seuil": 99.07,
    "rdt": 0.939,
@@ -2287,151 +2287,151 @@
     0.939
    ],
    "jours": 37,
-   "evenements": 57
+   "evenements": 58
   },
   "val|Commodities|>72h|b0": {
-   "n": 37,
+   "n": 38,
    "pertes": 3,
    "perte_ic": [
-    2.796,
-    21.301
+    2.721,
+    20.799
    ],
    "seuil": 98.14,
-   "rdt": -6.367,
+   "rdt": -6.149,
    "rdt_ic": [
-    -14.315,
+    -14.193,
     1.895
    ],
-   "jours": 25,
+   "jours": 26,
    "evenements": 19
   },
   "val|Commodities|toutes|b0": {
-   "n": 205,
+   "n": 209,
    "pertes": 18,
    "perte_ic": [
-    5.626,
-    13.451
+    5.517,
+    13.202
    ],
    "seuil": 98.14,
-   "rdt": -7.052,
+   "rdt": -6.88,
    "rdt_ic": [
-    -12.299,
-    -2.535
+    -11.372,
+    -2.715
    ],
    "jours": 73,
-   "evenements": 91
+   "evenements": 92
   },
   "val|Commodities|toutes|b1": {
-   "n": 218,
+   "n": 222,
    "pertes": 8,
    "perte_ic": [
-    1.871,
-    7.073
+    1.837,
+    6.948
    ],
    "seuil": 99.07,
-   "rdt": -2.765,
+   "rdt": -2.699,
    "rdt_ic": [
-    -5.34,
-    -0.407
+    -5.342,
+    -0.027
    ],
-   "jours": 67,
-   "evenements": 110
+   "jours": 68,
+   "evenements": 111
   },
   "val|Crypto|1-6h|b0": {
-   "n": 153,
+   "n": 159,
    "pertes": 4,
    "perte_ic": [
-    1.021,
-    6.529
+    0.983,
+    6.289
    ],
    "seuil": 98.14,
-   "rdt": -0.769,
+   "rdt": -0.668,
    "rdt_ic": [
-    -3.045,
+    -2.844,
     1.254
    ],
-   "jours": 72,
-   "evenements": 87
+   "jours": 73,
+   "evenements": 88
   },
   "val|Crypto|1-6h|b1": {
-   "n": 208,
+   "n": 211,
    "pertes": 4,
    "perte_ic": [
-    0.75,
-    4.839
+    0.74,
+    4.772
    ],
    "seuil": 99.07,
-   "rdt": -1.002,
+   "rdt": -0.975,
    "rdt_ic": [
-    -3.079,
-    0.451
+    -3.191,
+    0.48
    ],
    "jours": 85,
-   "evenements": 114
+   "evenements": 115
   },
   "val|Crypto|24-72h|b0": {
-   "n": 57,
+   "n": 58,
    "pertes": 5,
    "perte_ic": [
-    3.805,
-    18.945
+    3.739,
+    18.644
    ],
    "seuil": 98.14,
-   "rdt": -7.043,
+   "rdt": -6.889,
    "rdt_ic": [
-    -15.449,
-    -1.102
+    -14.779,
+    -1.446
    ],
    "jours": 22,
    "evenements": 22
   },
   "val|Crypto|24-72h|b1": {
-   "n": 47,
+   "n": 48,
    "pertes": 2,
    "perte_ic": [
-    1.175,
-    14.249
+    1.15,
+    13.976
    ],
    "seuil": 99.07,
-   "rdt": -3.357,
+   "rdt": -3.267,
    "rdt_ic": [
-    -13.481,
+    -10.798,
     0.939
    ],
-   "jours": 19,
+   "jours": 20,
    "evenements": 20
   },
   "val|Crypto|6-24h|b0": {
-   "n": 280,
+   "n": 284,
    "pertes": 11,
    "perte_ic": [
-    2.208,
-    6.897
+    2.176,
+    6.801
    ],
    "seuil": 98.14,
-   "rdt": -2.108,
+   "rdt": -2.051,
    "rdt_ic": [
-    -5.969,
-    0.811
+    -5.709,
+    0.823
    ],
    "jours": 88,
-   "evenements": 117
+   "evenements": 118
   },
   "val|Crypto|6-24h|b1": {
-   "n": 196,
+   "n": 200,
    "pertes": 7,
    "perte_ic": [
-    1.741,
-    7.187
+    1.706,
+    7.047
    ],
    "seuil": 99.07,
-   "rdt": -2.666,
+   "rdt": -2.594,
    "rdt_ic": [
-    -6.232,
-    0.41
+    -6.136,
+    -0.018
    ],
    "jours": 82,
-   "evenements": 105
+   "evenements": 106
   },
   "val|Crypto|<=1h|b0": {
    "n": 34,
@@ -2450,139 +2450,139 @@
    "evenements": 31
   },
   "val|Crypto|<=1h|b1": {
-   "n": 86,
+   "n": 88,
    "pertes": 2,
    "perte_ic": [
-    0.64,
-    8.088
+    0.625,
+    7.913
    ],
-   "seuil": 99.132,
-   "rdt": -1.471,
+   "seuil": 99.131,
+   "rdt": -1.416,
    "rdt_ic": [
-    -5.185,
-    0.887
+    -4.771,
+    0.886
    ],
-   "jours": 53,
-   "evenements": 76
+   "jours": 55,
+   "evenements": 78
   },
   "val|Crypto|<=1h|b2": {
-   "n": 120,
+   "n": 122,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    3.102
+    3.053
    ],
-   "seuil": 99.87,
-   "rdt": 0.13,
+   "seuil": 99.871,
+   "rdt": 0.129,
    "rdt_ic": [
     0.115,
-    0.143
+    0.144
    ],
    "jours": 52,
-   "evenements": 120
+   "evenements": 122
   },
   "val|Crypto|>72h|b0": {
+   "n": 67,
+   "pertes": 9,
+   "perte_ic": [
+    7.231,
+    23.6
+   ],
+   "seuil": 98.14,
+   "rdt": -11.792,
+   "rdt_ic": [
+    -24.457,
+    -1.289
+   ],
+   "jours": 31,
+   "evenements": 29
+  },
+  "val|Crypto|>72h|b1": {
    "n": 65,
    "pertes": 9,
    "perte_ic": [
     7.459,
     24.268
    ],
-   "seuil": 98.14,
-   "rdt": -12.213,
-   "rdt_ic": [
-    -24.437,
-    -0.103
-   ],
-   "jours": 31,
-   "evenements": 29
-  },
-  "val|Crypto|>72h|b1": {
-   "n": 63,
-   "pertes": 9,
-   "perte_ic": [
-    7.702,
-    24.975
-   ],
    "seuil": 99.07,
-   "rdt": -13.481,
+   "rdt": -13.037,
    "rdt_ic": [
-    -25.187,
-    -1.002
+    -25.873,
+    -0.744
    ],
    "jours": 29,
    "evenements": 31
   },
   "val|Crypto|toutes|b0": {
-   "n": 589,
+   "n": 602,
    "pertes": 29,
    "perte_ic": [
-    3.45,
-    6.982
+    3.375,
+    6.833
    ],
    "seuil": 98.142,
-   "rdt": -3.124,
+   "rdt": -3.015,
    "rdt_ic": [
-    -5.557,
-    -1.103
+    -5.509,
+    -0.959
    ],
    "jours": 92,
-   "evenements": 174
+   "evenements": 175
   },
   "val|Crypto|toutes|b1": {
-   "n": 600,
+   "n": 612,
    "pertes": 24,
    "perte_ic": [
-    2.703,
-    5.883
+    2.649,
+    5.769
    ],
    "seuil": 99.079,
-   "rdt": -3.108,
+   "rdt": -3.028,
    "rdt_ic": [
-    -5.195,
-    -1.172
+    -5.133,
+    -1.222
    ],
    "jours": 92,
-   "evenements": 208
+   "evenements": 209
   },
   "val|Crypto|toutes|b2": {
-   "n": 120,
+   "n": 122,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    3.102
+    3.053
    ],
-   "seuil": 99.87,
-   "rdt": 0.13,
+   "seuil": 99.871,
+   "rdt": 0.129,
    "rdt_ic": [
-    0.117,
+    0.116,
     0.145
    ],
    "jours": 52,
-   "evenements": 120
+   "evenements": 122
   },
   "val|Economics|6-24h|b0": {
-   "n": 40,
+   "n": 41,
    "pertes": 2,
    "perte_ic": [
-    1.382,
-    16.504
+    1.348,
+    16.139
    ],
    "seuil": 98.14,
-   "rdt": -3.2,
+   "rdt": -3.075,
    "rdt_ic": [
-    -9.684,
+    -9.953,
     1.895
    ],
-   "jours": 26,
-   "evenements": 28
+   "jours": 27,
+   "evenements": 29
   },
   "val|Economics|6-24h|b1": {
-   "n": 48,
+   "n": 49,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    7.41
+    7.27
    ],
    "seuil": 99.07,
    "rdt": 0.939,
@@ -2590,8 +2590,8 @@
     0.939,
     0.939
    ],
-   "jours": 26,
-   "evenements": 30
+   "jours": 27,
+   "evenements": 31
   },
   "val|Economics|>72h|b0": {
    "n": 43,
@@ -2603,7 +2603,7 @@
    "seuil": 98.14,
    "rdt": -5.214,
    "rdt_ic": [
-    -12.661,
+    -13.543,
     1.895
    ],
    "jours": 33,
@@ -2619,43 +2619,43 @@
    "seuil": 99.07,
    "rdt": -4.108,
    "rdt_ic": [
-    -10.532,
+    -9.686,
     0.939
    ],
    "jours": 25,
    "evenements": 17
   },
   "val|Economics|toutes|b0": {
-   "n": 118,
+   "n": 119,
    "pertes": 5,
    "perte_ic": [
-    1.823,
-    9.537
+    1.808,
+    9.46
    ],
    "seuil": 98.14,
-   "rdt": -2.422,
+   "rdt": -2.386,
    "rdt_ic": [
-    -6.01,
-    0.856
+    -5.583,
+    0.876
    ],
-   "jours": 58,
-   "evenements": 51
+   "jours": 59,
+   "evenements": 52
   },
   "val|Economics|toutes|b1": {
-   "n": 131,
+   "n": 132,
    "pertes": 3,
    "perte_ic": [
-    0.782,
-    6.517
+    0.776,
+    6.469
    ],
    "seuil": 99.07,
-   "rdt": -1.373,
+   "rdt": -1.355,
    "rdt_ic": [
-    -3.608,
+    -3.649,
     0.939
    ],
-   "jours": 61,
-   "evenements": 52
+   "jours": 62,
+   "evenements": 53
   },
   "val|Elections|toutes|b1": {
    "n": 38,
@@ -2667,7 +2667,7 @@
    "seuil": 99.085,
    "rdt": 0.923,
    "rdt_ic": [
-    0.899,
+    0.896,
     0.939
    ],
    "jours": 24,
@@ -2683,7 +2683,7 @@
    "seuil": 99.07,
    "rdt": -1.789,
    "rdt_ic": [
-    -7.968,
+    -8.238,
     0.939
    ],
    "jours": 19,
@@ -2699,34 +2699,34 @@
    "seuil": 98.14,
    "rdt": -2.957,
    "rdt_ic": [
-    -8.073,
-    0.8
+    -8.831,
+    0.788
    ],
    "jours": 44,
    "evenements": 58
   },
   "val|Entertainment|24-72h|b1": {
-   "n": 95,
+   "n": 96,
    "pertes": 4,
    "perte_ic": [
-    1.649,
-    10.331
+    1.632,
+    10.228
    ],
    "seuil": 99.07,
-   "rdt": -3.311,
+   "rdt": -3.267,
    "rdt_ic": [
-    -9.155,
+    -8.624,
     0.939
    ],
    "jours": 46,
-   "evenements": 65
+   "evenements": 66
   },
   "val|Entertainment|6-24h|b0": {
-   "n": 83,
+   "n": 85,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    4.424
+    4.324
    ],
    "seuil": 98.14,
    "rdt": 1.895,
@@ -2738,11 +2738,11 @@
    "evenements": 45
   },
   "val|Entertainment|6-24h|b1": {
-   "n": 88,
+   "n": 89,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    4.183
+    4.138
    ],
    "seuil": 99.07,
    "rdt": 0.939,
@@ -2754,84 +2754,84 @@
    "evenements": 57
   },
   "val|Entertainment|>72h|b0": {
-   "n": 147,
+   "n": 150,
    "pertes": 8,
    "perte_ic": [
-    2.783,
-    10.371
+    2.727,
+    10.17
    ],
    "seuil": 98.14,
-   "rdt": -3.65,
+   "rdt": -3.539,
    "rdt_ic": [
-    -8.127,
-    -0.103
+    -7.24,
+    -0.143
    ],
    "jours": 58,
    "evenements": 92
   },
   "val|Entertainment|>72h|b1": {
-   "n": 117,
+   "n": 120,
    "pertes": 4,
    "perte_ic": [
-    1.337,
-    8.462
+    1.304,
+    8.258
    ],
    "seuil": 99.07,
-   "rdt": -2.512,
+   "rdt": -2.426,
    "rdt_ic": [
-    -5.921,
-    0.091
+    -6.049,
+    0.213
    ],
    "jours": 58,
    "evenements": 76
   },
   "val|Entertainment|toutes|b0": {
-   "n": 327,
+   "n": 333,
    "pertes": 12,
    "perte_ic": [
-    2.111,
-    6.304
+    2.073,
+    6.192
    ],
    "seuil": 98.14,
-   "rdt": -1.844,
+   "rdt": -1.777,
    "rdt_ic": [
-    -4.174,
-    0.192
+    -3.747,
+    0.086
    ],
    "jours": 84,
    "evenements": 156
   },
   "val|Entertainment|toutes|b1": {
-   "n": 340,
+   "n": 346,
    "pertes": 9,
    "perte_ic": [
-    1.399,
-    4.953
+    1.374,
+    4.869
    ],
    "seuil": 99.07,
-   "rdt": -1.733,
+   "rdt": -1.687,
    "rdt_ic": [
-    -3.664,
-    -0.002
+    -3.695,
+    0.027
    ],
    "jours": 86,
-   "evenements": 157
+   "evenements": 158
   },
   "val|Financials|1-6h|b0": {
-   "n": 34,
+   "n": 35,
    "pertes": 1,
    "perte_ic": [
-    0.521,
-    14.916
+    0.506,
+    14.533
    ],
    "seuil": 98.14,
-   "rdt": -1.102,
+   "rdt": -1.016,
    "rdt_ic": [
-    -8.646,
+    -8.294,
     1.895
    ],
-   "jours": 23,
-   "evenements": 26
+   "jours": 24,
+   "evenements": 27
   },
   "val|Financials|1-6h|b1": {
    "n": 46,
@@ -2843,7 +2843,7 @@
    "seuil": 99.07,
    "rdt": -3.45,
    "rdt_ic": [
-    -13.481,
+    -14.355,
     0.939
    ],
    "jours": 26,
@@ -2859,24 +2859,24 @@
    "seuil": 99.07,
    "rdt": -4.374,
    "rdt_ic": [
-    -12.343,
+    -12.702,
     0.939
    ],
    "jours": 24,
    "evenements": 32
   },
   "val|Financials|toutes|b0": {
-   "n": 113,
+   "n": 114,
    "pertes": 14,
    "perte_ic": [
-    7.525,
-    19.726
+    7.458,
+    19.562
    ],
    "seuil": 98.14,
-   "rdt": -10.729,
+   "rdt": -10.618,
    "rdt_ic": [
     -18.671,
-    -4.04
+    -4.218
    ],
    "jours": 56,
    "evenements": 75
@@ -2891,8 +2891,8 @@
    "seuil": 99.07,
    "rdt": -9.828,
    "rdt_ic": [
-    -16.644,
-    -3.71
+    -16.744,
+    -4.271
    ],
    "jours": 57,
    "evenements": 91
@@ -2907,7 +2907,7 @@
    "seuil": 98.14,
    "rdt": -0.859,
    "rdt_ic": [
-    -4.99,
+    -4.721,
     1.895
    ],
    "jours": 35,
@@ -2939,7 +2939,7 @@
    "seuil": 98.14,
    "rdt": -0.822,
    "rdt_ic": [
-    -4.636,
+    -4.99,
     1.895
    ],
    "jours": 41,
@@ -2955,75 +2955,75 @@
    "seuil": 99.07,
    "rdt": -2.12,
    "rdt_ic": [
-    -7.473,
+    -7.713,
     0.939
    ],
    "jours": 26,
    "evenements": 26
   },
   "val|Mentions|6-24h|b0": {
-   "n": 92,
+   "n": 93,
    "pertes": 2,
    "perte_ic": [
-    0.598,
-    7.583
+    0.592,
+    7.505
    ],
    "seuil": 98.14,
-   "rdt": -0.32,
+   "rdt": -0.296,
    "rdt_ic": [
-    -4.243,
+    -3.829,
     1.895
    ],
-   "jours": 44,
+   "jours": 45,
    "evenements": 66
   },
   "val|Mentions|6-24h|b1": {
-   "n": 111,
+   "n": 113,
    "pertes": 1,
    "perte_ic": [
-    0.159,
-    4.927
+    0.156,
+    4.843
    ],
    "seuil": 99.07,
-   "rdt": 0.029,
+   "rdt": 0.045,
    "rdt_ic": [
-    -1.945,
+    -2.732,
     0.939
    ],
-   "jours": 40,
-   "evenements": 59
+   "jours": 41,
+   "evenements": 60
   },
   "val|Mentions|toutes|b0": {
-   "n": 279,
+   "n": 281,
    "pertes": 8,
    "perte_ic": [
-    1.46,
-    5.555
+    1.45,
+    5.516
    ],
    "seuil": 98.14,
-   "rdt": -1.026,
+   "rdt": -1.006,
    "rdt_ic": [
-    -3.055,
-    0.784
+    -2.87,
+    0.776
    ],
    "jours": 74,
    "evenements": 144
   },
   "val|Mentions|toutes|b1": {
-   "n": 267,
+   "n": 270,
    "pertes": 3,
    "perte_ic": [
-    0.383,
-    3.251
+    0.379,
+    3.215
    ],
    "seuil": 99.07,
-   "rdt": -0.195,
+   "rdt": -0.183,
    "rdt_ic": [
-    -1.436,
+    -1.659,
     0.939
    ],
    "jours": 70,
-   "evenements": 136
+   "evenements": 138
   },
   "val|Politics|24-72h|b1": {
    "n": 30,
@@ -3035,75 +3035,75 @@
    "seuil": 99.083,
    "rdt": -2.438,
    "rdt_ic": [
-    -10.721,
+    -8.852,
     0.939
    ],
    "jours": 25,
    "evenements": 23
   },
   "val|Politics|>72h|b0": {
-   "n": 44,
+   "n": 45,
    "pertes": 2,
    "perte_ic": [
-    1.256,
-    15.135
+    1.227,
+    14.828
    ],
    "seuil": 98.146,
-   "rdt": -2.743,
+   "rdt": -2.64,
    "rdt_ic": [
-    -9.965,
+    -9.426,
     1.895
    ],
    "jours": 29,
-   "evenements": 32
+   "evenements": 33
   },
   "val|Politics|>72h|b1": {
-   "n": 34,
+   "n": 35,
    "pertes": 1,
    "perte_ic": [
-    0.521,
-    14.916
+    0.506,
+    14.533
    ],
    "seuil": 99.07,
-   "rdt": -2.03,
+   "rdt": -1.945,
    "rdt_ic": [
-    -7.968,
+    -8.238,
     0.939
    ],
    "jours": 25,
-   "evenements": 28
+   "evenements": 29
   },
   "val|Politics|toutes|b0": {
-   "n": 85,
+   "n": 86,
    "pertes": 3,
    "perte_ic": [
-    1.208,
-    9.87
+    1.193,
+    9.761
    ],
-   "seuil": 98.18,
-   "rdt": -1.741,
+   "seuil": 98.179,
+   "rdt": -1.698,
    "rdt_ic": [
-    -6.496,
-    1.852
+    -6.64,
+    1.854
    ],
    "jours": 45,
-   "evenements": 53
+   "evenements": 54
   },
   "val|Politics|toutes|b1": {
-   "n": 90,
+   "n": 91,
    "pertes": 2,
    "perte_ic": [
-    0.612,
-    7.745
+    0.605,
+    7.663
    ],
    "seuil": 99.089,
-   "rdt": -1.323,
+   "rdt": -1.298,
    "rdt_ic": [
-    -4.461,
+    -5.254,
     0.934
    ],
    "jours": 49,
-   "evenements": 54
+   "evenements": 55
   },
   "val|Science and Technology|>72h|b0": {
    "n": 30,
@@ -3170,132 +3170,132 @@
    "evenements": 33
   },
   "val|Sports|1-6h|b0": {
-   "n": 838,
+   "n": 849,
    "pertes": 58,
    "perte_ic": [
-    5.392,
-    8.844
+    5.322,
+    8.73
    ],
    "seuil": 98.153,
-   "rdt": -5.17,
+   "rdt": -5.079,
    "rdt_ic": [
-    -7.215,
-    -3.401
+    -6.873,
+    -3.147
    ],
    "jours": 92,
-   "evenements": 719
+   "evenements": 729
   },
   "val|Sports|1-6h|b1": {
-   "n": 810,
-   "pertes": 34,
+   "n": 826,
+   "pertes": 35,
    "perte_ic": [
-    3.019,
-    5.808
+    3.062,
+    5.836
    ],
    "seuil": 99.074,
-   "rdt": -3.302,
+   "rdt": -3.342,
    "rdt_ic": [
-    -5.082,
-    -1.984
+    -4.993,
+    -1.879
    ],
-   "jours": 91,
-   "evenements": 673
+   "jours": 92,
+   "evenements": 683
   },
   "val|Sports|1-6h|b2": {
-   "n": 36,
+   "n": 38,
    "pertes": 1,
    "perte_ic": [
-    0.492,
-    14.17
+    0.466,
+    13.495
    ],
-   "seuil": 99.804,
-   "rdt": -2.587,
+   "seuil": 99.809,
+   "rdt": -2.446,
    "rdt_ic": [
-    -10.932,
-    0.213
+    -8.406,
+    0.215
    ],
    "jours": 21,
    "evenements": 23
   },
   "val|Sports|24-72h|b0": {
-   "n": 585,
+   "n": 593,
    "pertes": 22,
    "perte_ic": [
-    2.496,
-    5.628
+    2.463,
+    5.553
    ],
-   "seuil": 98.347,
-   "rdt": -2.143,
+   "seuil": 98.345,
+   "rdt": -2.09,
    "rdt_ic": [
-    -3.689,
-    -0.768
+    -3.808,
+    -0.485
    ],
-   "jours": 89,
-   "evenements": 343
+   "jours": 90,
+   "evenements": 348
   },
   "val|Sports|24-72h|b1": {
-   "n": 861,
+   "n": 878,
    "pertes": 22,
    "perte_ic": [
-    1.693,
-    3.838
+    1.66,
+    3.765
    ],
-   "seuil": 99.153,
-   "rdt": -1.723,
+   "seuil": 99.154,
+   "rdt": -1.673,
    "rdt_ic": [
-    -2.759,
-    -0.752
+    -2.838,
+    -0.706
    ],
    "jours": 91,
-   "evenements": 387
+   "evenements": 392
   },
   "val|Sports|24-72h|b2": {
-   "n": 279,
+   "n": 282,
    "pertes": 2,
    "perte_ic": [
-    0.197,
-    2.576
+    0.195,
+    2.549
    ],
    "seuil": 99.821,
-   "rdt": -0.538,
+   "rdt": -0.531,
    "rdt_ic": [
-    -1.35,
-    0.203
+    -1.305,
+    0.2
    ],
    "jours": 64,
    "evenements": 42
   },
   "val|Sports|6-24h|b0": {
-   "n": 593,
+   "n": 602,
    "pertes": 31,
    "perte_ic": [
-    3.707,
-    7.325
+    3.651,
+    7.217
    ],
    "seuil": 98.224,
-   "rdt": -3.514,
+   "rdt": -3.434,
    "rdt_ic": [
-    -5.364,
-    -1.786
+    -5.673,
+    -1.897
    ],
    "jours": 90,
-   "evenements": 429
+   "evenements": 437
   },
   "val|Sports|6-24h|b1": {
-   "n": 552,
+   "n": 560,
    "pertes": 17,
    "perte_ic": [
-    1.932,
-    4.876
+    1.904,
+    4.808
    ],
-   "seuil": 99.131,
-   "rdt": -2.23,
+   "seuil": 99.13,
+   "rdt": -2.184,
    "rdt_ic": [
-    -3.896,
-    -0.983
+    -3.845,
+    -0.85
    ],
    "jours": 86,
-   "evenements": 324
+   "evenements": 331
   },
   "val|Sports|6-24h|b2": {
    "n": 142,
@@ -3307,267 +3307,267 @@
    "seuil": 99.809,
    "rdt": 0.191,
    "rdt_ic": [
-    0.173,
-    0.211
+    0.168,
+    0.209
    ],
    "jours": 26,
    "evenements": 24
   },
   "val|Sports|<=1h|b0": {
-   "n": 1270,
+   "n": 1285,
    "pertes": 18,
    "perte_ic": [
-    0.898,
-    2.229
+    0.888,
+    2.203
    ],
    "seuil": 98.14,
-   "rdt": 0.451,
+   "rdt": 0.468,
    "rdt_ic": [
-    -0.271,
-    1.077
+    -0.229,
+    1.102
    ],
    "jours": 92,
-   "evenements": 1157
+   "evenements": 1168
   },
   "val|Sports|<=1h|b1": {
-   "n": 1777,
+   "n": 1801,
    "pertes": 31,
    "perte_ic": [
-    1.232,
-    2.466
+    1.215,
+    2.433
    ],
    "seuil": 99.07,
-   "rdt": -0.822,
+   "rdt": -0.799,
    "rdt_ic": [
-    -1.435,
-    -0.204
+    -1.486,
+    -0.121
    ],
    "jours": 92,
-   "evenements": 1567
+   "evenements": 1588
   },
   "val|Sports|>72h|b0": {
-   "n": 665,
+   "n": 678,
    "pertes": 30,
    "perte_ic": [
-    3.178,
-    6.367
+    3.117,
+    6.246
    ],
-   "seuil": 98.44,
-   "rdt": -2.998,
+   "seuil": 98.441,
+   "rdt": -2.911,
    "rdt_ic": [
-    -4.583,
-    -1.358
+    -4.903,
+    -1.482
    ],
-   "jours": 77,
-   "evenements": 292
+   "jours": 78,
+   "evenements": 296
   },
   "val|Sports|>72h|b1": {
-   "n": 891,
+   "n": 906,
    "pertes": 30,
    "perte_ic": [
-    2.369,
-    4.766
+    2.329,
+    4.688
    ],
    "seuil": 99.219,
-   "rdt": -2.607,
+   "rdt": -2.55,
    "rdt_ic": [
-    -3.889,
-    -1.529
+    -3.946,
+    -1.378
    ],
    "jours": 76,
-   "evenements": 266
+   "evenements": 270
   },
   "val|Sports|>72h|b2": {
-   "n": 772,
+   "n": 783,
    "pertes": 9,
    "perte_ic": [
-    0.615,
-    2.201
+    0.606,
+    2.17
    ],
    "seuil": 99.851,
-   "rdt": -1.018,
+   "rdt": -1.002,
    "rdt_ic": [
-    -1.893,
-    -0.438
+    -1.864,
+    -0.377
    ],
    "jours": 54,
    "evenements": 43
   },
   "val|Sports|toutes|b0": {
-   "n": 3951,
+   "n": 4007,
    "pertes": 159,
    "perte_ic": [
-    3.455,
-    4.683
+    3.406,
+    4.618
    ],
    "seuil": 98.237,
-   "rdt": -2.301,
+   "rdt": -2.244,
    "rdt_ic": [
-    -2.975,
-    -1.604
+    -2.947,
+    -1.561
    ],
    "jours": 94,
-   "evenements": 2589
+   "evenements": 2619
   },
   "val|Sports|toutes|b1": {
-   "n": 4891,
-   "pertes": 134,
+   "n": 4971,
+   "pertes": 135,
    "perte_ic": [
-    2.318,
-    3.236
+    2.299,
+    3.205
    ],
-   "seuil": 99.12,
-   "rdt": -1.876,
+   "seuil": 99.119,
+   "rdt": -1.852,
    "rdt_ic": [
-    -2.388,
-    -1.376
+    -2.319,
+    -1.374
    ],
    "jours": 94,
-   "evenements": 2808
+   "evenements": 2846
   },
   "val|Sports|toutes|b2": {
-   "n": 1232,
+   "n": 1248,
    "pertes": 12,
    "perte_ic": [
-    0.558,
-    1.695
+    0.551,
+    1.673
    ],
    "seuil": 99.838,
-   "rdt": -0.813,
+   "rdt": -0.801,
    "rdt_ic": [
-    -1.326,
-    -0.366
+    -1.28,
+    -0.348
    ],
    "jours": 85,
    "evenements": 53
   },
   "val|TOUT|1-6h|b0": {
-   "n": 1210,
+   "n": 1230,
    "pertes": 69,
    "perte_ic": [
-    4.531,
-    7.155
+    4.457,
+    7.039
    ],
    "seuil": 98.149,
-   "rdt": -3.924,
+   "rdt": -3.83,
    "rdt_ic": [
-    -5.5,
-    -2.6
+    -5.4,
+    -2.258
    ],
    "jours": 92,
-   "evenements": 971
+   "evenements": 984
   },
   "val|TOUT|1-6h|b1": {
-   "n": 1313,
-   "pertes": 46,
+   "n": 1333,
+   "pertes": 47,
    "perte_ic": [
-    2.637,
-    4.641
+    2.662,
+    4.657
    ],
    "seuil": 99.073,
-   "rdt": -2.6,
+   "rdt": -2.623,
    "rdt_ic": [
-    -3.834,
-    -1.574
+    -3.76,
+    -1.481
    ],
    "jours": 92,
-   "evenements": 993
+   "evenements": 1005
   },
   "val|TOUT|1-6h|b2": {
-   "n": 37,
+   "n": 39,
    "pertes": 1,
    "perte_ic": [
-    0.479,
-    13.824
+    0.454,
+    13.181
    ],
-   "seuil": 99.799,
-   "rdt": -2.507,
+   "seuil": 99.805,
+   "rdt": -2.374,
    "rdt_ic": [
-    -8.914,
-    0.225
+    -9.111,
+    0.221
    ],
    "jours": 22,
    "evenements": 24
   },
   "val|TOUT|24-72h|b0": {
-   "n": 1049,
+   "n": 1061,
    "pertes": 59,
    "perte_ic": [
-    4.385,
-    7.187
+    4.335,
+    7.107
    ],
-   "seuil": 98.257,
-   "rdt": -3.95,
+   "seuil": 98.256,
+   "rdt": -3.885,
    "rdt_ic": [
-    -5.126,
-    -2.509
+    -5.314,
+    -2.588
    ],
    "jours": 93,
-   "evenements": 680
+   "evenements": 687
   },
   "val|TOUT|24-72h|b1": {
-   "n": 1244,
+   "n": 1265,
    "pertes": 46,
    "perte_ic": [
-    2.784,
-    4.897
+    2.737,
+    4.816
    ],
    "seuil": 99.128,
-   "rdt": -2.851,
+   "rdt": -2.789,
    "rdt_ic": [
-    -3.976,
-    -1.981
+    -3.782,
+    -1.846
    ],
    "jours": 92,
-   "evenements": 667
+   "evenements": 675
   },
   "val|TOUT|24-72h|b2": {
-   "n": 282,
+   "n": 285,
    "pertes": 2,
    "perte_ic": [
-    0.195,
-    2.549
+    0.193,
+    2.522
    ],
    "seuil": 99.821,
-   "rdt": -0.531,
+   "rdt": -0.524,
    "rdt_ic": [
-    -1.325,
+    -1.352,
     0.2
    ],
    "jours": 65,
    "evenements": 45
   },
   "val|TOUT|6-24h|b0": {
-   "n": 1399,
-   "pertes": 71,
+   "n": 1420,
+   "pertes": 72,
    "perte_ic": [
-    4.043,
-    6.353
+    4.046,
+    6.338
    ],
    "seuil": 98.177,
-   "rdt": -3.313,
+   "rdt": -3.308,
    "rdt_ic": [
-    -4.713,
-    -2.064
+    -4.383,
+    -2.099
    ],
    "jours": 93,
-   "evenements": 942
+   "evenements": 955
   },
   "val|TOUT|6-24h|b1": {
-   "n": 1293,
+   "n": 1313,
    "pertes": 38,
    "perte_ic": [
-    2.149,
-    4.008
+    2.116,
+    3.947
    ],
-   "seuil": 99.097,
-   "rdt": -2.054,
+   "seuil": 99.096,
+   "rdt": -2.009,
    "rdt_ic": [
-    -3.162,
-    -1.011
+    -2.994,
+    -1.095
    ],
    "jours": 93,
-   "evenements": 816
+   "evenements": 828
   },
   "val|TOUT|6-24h|b2": {
    "n": 148,
@@ -3579,203 +3579,203 @@
    "seuil": 99.807,
    "rdt": 0.193,
    "rdt_ic": [
-    0.172,
-    0.21
+    0.173,
+    0.208
    ],
    "jours": 27,
    "evenements": 25
   },
   "val|TOUT|<=1h|b0": {
-   "n": 1375,
+   "n": 1391,
    "pertes": 23,
    "perte_ic": [
-    1.117,
-    2.498
+    1.104,
+    2.469
    ],
    "seuil": 98.141,
-   "rdt": 0.19,
+   "rdt": 0.21,
    "rdt_ic": [
-    -0.509,
-    0.856
+    -0.473,
+    0.803
    ],
    "jours": 92,
-   "evenements": 1254
+   "evenements": 1265
   },
   "val|TOUT|<=1h|b1": {
-   "n": 2008,
+   "n": 2036,
    "pertes": 35,
    "perte_ic": [
-    1.256,
-    2.414
+    1.239,
+    2.381
    ],
    "seuil": 99.073,
-   "rdt": -0.824,
+   "rdt": -0.799,
    "rdt_ic": [
-    -1.518,
-    -0.22
+    -1.452,
+    -0.292
    ],
    "jours": 92,
-   "evenements": 1772
+   "evenements": 1797
   },
   "val|TOUT|<=1h|b2": {
-   "n": 123,
+   "n": 125,
    "pertes": 0,
    "perte_ic": [
     0.0,
-    3.029
+    2.982
    ],
-   "seuil": 99.871,
-   "rdt": 0.129,
+   "seuil": 99.872,
+   "rdt": 0.128,
    "rdt_ic": [
-    0.116,
-    0.143
+    0.115,
+    0.142
    ],
    "jours": 53,
-   "evenements": 123
+   "evenements": 125
   },
   "val|TOUT|>72h|b0": {
-   "n": 1093,
+   "n": 1113,
    "pertes": 61,
    "perte_ic": [
-    4.369,
-    7.104
+    4.29,
+    6.977
    ],
-   "seuil": 98.323,
-   "rdt": -3.97,
+   "seuil": 98.324,
+   "rdt": -3.869,
    "rdt_ic": [
-    -5.593,
-    -2.396
+    -5.405,
+    -2.584
    ],
    "jours": 88,
-   "evenements": 552
+   "evenements": 557
   },
   "val|TOUT|>72h|b1": {
-   "n": 1269,
+   "n": 1292,
    "pertes": 52,
    "perte_ic": [
-    3.138,
-    5.334
+    3.082,
+    5.24
    ],
    "seuil": 99.175,
-   "rdt": -3.3,
+   "rdt": -3.226,
    "rdt_ic": [
-    -4.661,
-    -1.991
+    -4.731,
+    -2.119
    ],
    "jours": 90,
-   "evenements": 511
+   "evenements": 517
   },
   "val|TOUT|>72h|b2": {
-   "n": 781,
+   "n": 792,
    "pertes": 9,
    "perte_ic": [
-    0.607,
-    2.175
+    0.599,
+    2.145
    ],
    "seuil": 99.851,
-   "rdt": -1.005,
+   "rdt": -0.989,
    "rdt_ic": [
-    -1.83,
-    -0.416
+    -1.71,
+    -0.402
    ],
    "jours": 58,
    "evenements": 47
   },
   "val|TOUT|toutes|b0": {
-   "n": 6126,
-   "pertes": 283,
+   "n": 6215,
+   "pertes": 284,
    "perte_ic": [
-    4.122,
-    5.174
+    4.078,
+    5.117
    ],
    "seuil": 98.203,
-   "rdt": -2.874,
+   "rdt": -2.824,
    "rdt_ic": [
-    -3.541,
-    -2.271
+    -3.478,
+    -2.157
    ],
    "jours": 94,
-   "evenements": 3678
+   "evenements": 3715
   },
   "val|TOUT|toutes|b1": {
-   "n": 7127,
-   "pertes": 217,
+   "n": 7239,
+   "pertes": 218,
    "perte_ic": [
-    2.67,
-    3.47
+    2.642,
+    3.431
    ],
    "seuil": 99.105,
-   "rdt": -2.169,
+   "rdt": -2.136,
    "rdt_ic": [
-    -2.657,
-    -1.792
+    -2.563,
+    -1.738
    ],
    "jours": 94,
-   "evenements": 3928
+   "evenements": 3976
   },
   "val|TOUT|toutes|b2": {
-   "n": 1371,
+   "n": 1389,
    "pertes": 12,
    "perte_ic": [
-    0.501,
-    1.524
+    0.495,
+    1.504
    ],
-   "seuil": 99.84,
-   "rdt": -0.717,
+   "seuil": 99.841,
+   "rdt": -0.706,
    "rdt_ic": [
-    -1.211,
-    -0.342
+    -1.204,
+    -0.298
    ],
    "jours": 91,
-   "evenements": 178
+   "evenements": 180
   },
   "val|TOUT|vol<2,34M (tirage)|b0": {
-   "n": 5981,
-   "pertes": 273,
+   "n": 6070,
+   "pertes": 274,
    "perte_ic": [
-    4.064,
-    5.123
+    4.02,
+    5.066
    ],
    "seuil": 98.198,
-   "rdt": -2.813,
+   "rdt": -2.762,
    "rdt_ic": [
-    -3.416,
-    -2.271
+    -3.402,
+    -2.196
    ],
    "jours": 94,
-   "evenements": 3640
+   "evenements": 3677
   },
   "val|TOUT|vol<2,34M (tirage)|b1": {
-   "n": 6970,
-   "pertes": 205,
+   "n": 7081,
+   "pertes": 206,
    "perte_ic": [
-    2.57,
-    3.364
+    2.543,
+    3.327
    ],
    "seuil": 99.103,
-   "rdt": -2.062,
+   "rdt": -2.03,
    "rdt_ic": [
-    -2.552,
-    -1.604
+    -2.48,
+    -1.607
    ],
    "jours": 94,
-   "evenements": 3887
+   "evenements": 3935
   },
   "val|TOUT|vol<2,34M (tirage)|b2": {
-   "n": 1288,
+   "n": 1305,
    "pertes": 7,
    "perte_ic": [
-    0.264,
-    1.118
+    0.26,
+    1.103
    ],
    "seuil": 99.844,
-   "rdt": -0.388,
+   "rdt": -0.381,
    "rdt_ic": [
-    -0.86,
-    -0.059
+    -0.875,
+    -0.055
    ],
    "jours": 91,
-   "evenements": 177
+   "evenements": 179
   },
   "val|TOUT|vol>=2,34M (tous)|b0": {
    "n": 145,
@@ -3787,40 +3787,40 @@
    "seuil": 98.434,
    "rdt": -5.415,
    "rdt_ic": [
-    -9.842,
-    -1.941
+    -9.964,
+    -1.787
    ],
    "jours": 62,
    "evenements": 68
   },
   "val|TOUT|vol>=2,34M (tous)|b1": {
-   "n": 157,
+   "n": 158,
    "pertes": 12,
    "perte_ic": [
-    4.426,
-    12.884
+    4.398,
+    12.805
    ],
-   "seuil": 99.209,
-   "rdt": -6.907,
+   "seuil": 99.211,
+   "rdt": -6.86,
    "rdt_ic": [
-    -12.046,
-    -3.021
+    -11.992,
+    -3.37
    ],
    "jours": 63,
    "evenements": 75
   },
   "val|TOUT|vol>=2,34M (tous)|b2": {
-   "n": 83,
+   "n": 84,
    "pertes": 5,
    "perte_ic": [
-    2.6,
-    13.338
+    2.569,
+    13.188
    ],
-   "seuil": 99.784,
-   "rdt": -5.821,
+   "seuil": 99.786,
+   "rdt": -5.751,
    "rdt_ic": [
-    -13.663,
-    -1.74
+    -12.489,
+    -1.551
    ],
    "jours": 38,
    "evenements": 14
@@ -3828,13 +3828,13 @@
  },
  "couverture": {
   "marches_retenus": 502684,
-  "traites": 231245,
-  "restants": 271439,
+  "traites": 234654,
+  "restants": 268030,
   "ordre": "aleatoire depuis le 23/11/2026 12 h UTC ; les 7 995 premiers par volume decroissant",
-  "sans_chandeliers_ce_passage": 567,
+  "sans_chandeliers_ce_passage": 543,
   "sources_ce_passage": {
-   "hist": 1992,
-   "live": 1390
+   "live": 1391,
+   "hist": 2018
   },
   "seuil_volume": 20000
  }
