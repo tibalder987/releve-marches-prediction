@@ -1,0 +1,47 @@
+{
+ "recompense": {
+  "condition_id": "0x128e8e725fff25f7ab942cbdae8eca9ed287ea8efc6cfa1cc9b1230f2fca2162",
+  "market_id": "7287078",
+  "market_slug": "jensen-huang-announced-resignation-or-removal-again-by-march-31-2027",
+  "question": "Jensen Huang announced resignation or removal again by March 31, 2027?",
+  "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-jensen-huang-be-richest-person-on-december-31-iU8eWlv0KU_b.jpg",
+  "market_competitiveness": 34.863348,
+  "rewards_config": [
+   {
+    "asset_address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+    "start_date": "2026-11-23",
+    "end_date": "2500-12-31",
+    "rate_per_day": 2000,
+    "total_rewards": 0,
+    "id": 5315956
+   }
+  ],
+  "rewards_max_spread": 4.5,
+  "rewards_min_size": 50,
+  "spread": 0.01,
+  "tokens": [
+   {
+    "token_id": "51469726278552005145104611186434281663906110938133208322911624694050931829692",
+    "outcome": "Yes",
+    "price": 0.135
+   },
+   {
+    "token_id": "74679607425385229072916743955737643227491093321745124367583002870765021585902",
+    "outcome": "No",
+    "price": 0.865
+   }
+  ],
+  "group_item_title": "March 31, 2027",
+  "volume_24hr": 68837.563043,
+  "event_id": "1448088",
+  "event_slug": "jensen-huang-out-as-nvidia-ceo-again-byptptpt",
+  "created_at": "2026-11-23T15:01:59.027317Z",
+  "one_day_price_change": 0,
+  "end_date": ""
+ },
+ "recompense_enveloppe": {
+  "next_cursor": "NTAw",
+  "limit": 500,
+  "count": 500
+ }
+}
