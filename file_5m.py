@@ -123,37 +123,49 @@ def main():
 
 
 def start_pistes():
-    """Lance à côté le relevé des pistes (pistes_live.py), sans lien avec la mesure de file.
+    """Lance à côté les relevés de pistes listés dans pistes.json, sans lien avec la mesure de file.
 
     Provisoire : je ne peux pas créer de nouvelle tâche GitHub sans le navigateur, alors ce
-    travail héberge le relevé. Il écrit dans <dir>/pistes_polymarket/, enregistré avec le
-    reste du dossier. Un fichier ARRET dans ce dossier l'empêche de démarrer.
+    travail héberge ces relevés. pistes.json est une liste de commandes [script, argument, ...] ;
+    {dir} y vaut <dir>/pistes_polymarket et {seconds} la durée de la tranche moins 150 s.
+    Un fichier ARRET dans ce dossier empêche tout démarrage.
     """
+    children = []
     try:
         import subprocess
         arg = lambda k, d: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else d
         until = arg("--until", None)
         if until and time.time() >= tms(until) / 1000:
-            return None
-        script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pistes_live.py")
+            return children
+        here = os.path.dirname(os.path.abspath(__file__))
         out = os.path.join(arg("--dir", "file"), "pistes_polymarket")
-        if not os.path.exists(script) or os.path.exists(os.path.join(out, "ARRET")):
-            return None
-        seconds = max(120.0, float(arg("--max-seconds", 3300)) - 150)
-        return subprocess.Popen([sys.executable, script, "--dir", out, "--max-seconds", str(seconds), "--rec-min", "20", "--univers-min", "60"],
-                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if os.path.exists(os.path.join(out, "ARRET")):
+            return children
+        seconds = str(max(120.0, float(arg("--max-seconds", 3300)) - 150))
+        try:
+            cmds = json.load(open(os.path.join(here, "pistes.json")))
+        except Exception:
+            cmds = [["pistes_live.py", "--dir", "{dir}", "--max-seconds", "{seconds}", "--rec-min", "20", "--univers-min", "60"]]
+        for cmd in cmds:
+            script = os.path.join(here, os.path.basename(str(cmd[0])))
+            if not os.path.exists(script):
+                continue
+            argv = [str(x).replace("{dir}", out).replace("{seconds}", seconds) for x in cmd[1:]]
+            children.append(subprocess.Popen([sys.executable, script] + argv, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
     except Exception:
-        return None
+        pass
+    return children
 
 
 if __name__ == "__main__":
-    child = start_pistes()
+    children = start_pistes()
     try:
         main()
     finally:
-        if child is not None:
+        t_end = time.time() + 150
+        for child in children:
             try:
-                child.wait(timeout=150)
+                child.wait(timeout=max(1.0, t_end - time.time()))
             except Exception:
                 try:
                     child.kill()
