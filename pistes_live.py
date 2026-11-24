@@ -39,7 +39,8 @@ CLOB = os.environ.get("PISTES_CLOB", "https://clob.polymarket.com")
 EVENTS = GAMMA + "/events/keyset"
 BOOKS = CLOB + "/books"
 REWARDS = CLOB + "/rewards/markets/multi"
-UA = {"User-Agent": "releve-lecture-seule/1.0", "Content-Type": "application/json", "Accept": "application/json"}
+# Accept-Encoding: gzip est exigé par /events et /events/keyset au-delà de 50 événements par page.
+UA = {"User-Agent": "releve-lecture-seule/1.0", "Content-Type": "application/json", "Accept": "application/json", "Accept-Encoding": "gzip"}
 
 STAT = {"ok": 0, "echecs": 0, "429": 0, "derniere_erreur": ""}
 GAP = [0.25]          # délai minimal entre deux requêtes, tous fils confondus (4 par seconde au plus)
@@ -59,7 +60,10 @@ def http_json(url, data=None, tries=4):
             req = urllib.request.Request(url, data=json.dumps(data).encode() if data is not None else None, headers=UA,
                                          method="POST" if data is not None else "GET")
             with urllib.request.urlopen(req, timeout=30) as r:
-                out = json.loads(r.read().decode())
+                raw = r.read()
+                if (r.headers.get("Content-Encoding") or "").lower() == "gzip" or raw[:2] == bytes([31, 139]):
+                    raw = gzip.decompress(raw)
+                out = json.loads(raw.decode())
             STAT["ok"] += 1
             return out
         except urllib.error.HTTPError as e:
@@ -293,7 +297,8 @@ def evaluate(e, books, ts):
     fees = [g["fee"] for g in e["legs"]]
     asks = [b[0] for b in bk]
     bids = [b[1] for b in bk]
-    complete = (not e["inc"]) and all(asks)
+    # panier Oui : toutes les issues négociables, et aucune déjà close (l'une d'elles a pu gagner)
+    complete = (not e["inc"]) and not e.get("clos") and all(asks)
     sa = sum(a[0][0] for a in asks) if complete else None
     sb = sum(b[0][0] for b in bids if b)
     ey = (1 - sa) if sa is not None else None
@@ -458,7 +463,7 @@ def main():
             evs, uni_t = c["evs"], c["t"]
     except Exception:
         pass
-    skip_path = a.cache + ".skip"
+    skip_path = a.cache + ".skip2"
     try:
         skip = set(json.load(open(skip_path)))
     except Exception:
