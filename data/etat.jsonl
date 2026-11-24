@@ -22,3 +22,4 @@
 {"debut": "2026-11-24T02:30:51.073993+00:00", "fin": "2026-11-24T03:26:21.320102+00:00", "cycles": 100, "observations": 6395, "issues_candidates": 1192, "marches_connus": 2952, "http": {"ok": 2335, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-24T03:26:23.688149+00:00", "fin": "2026-11-24T04:21:24.350323+00:00", "cycles": 102, "observations": 6026, "issues_candidates": 857, "marches_connus": 3034, "http": {"ok": 1717, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-24T04:21:26.836997+00:00", "fin": "2026-11-24T05:16:54.454606+00:00", "cycles": 105, "observations": 5624, "issues_candidates": 791, "marches_connus": 3173, "http": {"ok": 1180, "echecs": 0, "derniere_erreur": ""}}
+{"debut": "2026-11-24T05:17:08.353842+00:00", "fin": "2026-11-24T06:12:34.514200+00:00", "cycles": 106, "observations": 5298, "issues_candidates": 543, "marches_connus": 3241, "http": {"ok": 922, "echecs": 0, "derniere_erreur": ""}}
