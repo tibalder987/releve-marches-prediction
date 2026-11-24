@@ -2,7 +2,7 @@
 """Relevé en lecture seule de deux pistes sur Polymarket. Aucun compte, aucun ordre.
 
 Piste 1, récompenses de liquidité
-  Toutes les 15 min : liste des marchés récompensés (GET clob /rewards/markets/multi,
+  Toutes les 3 h : liste des marchés récompensés (GET clob /rewards/markets/multi,
   sans authentification) puis carnet de chacun. Pour chaque marché on note le montant
   journalier, l'écart maximal admis autour du milieu, et la liquidité déjà posée dans cet
   écart, pondérée par la formule de score publiée : ((v - s) / v)^2 x taille.
@@ -39,7 +39,7 @@ CLOB = os.environ.get("PISTES_CLOB", "https://clob.polymarket.com")
 EVENTS = GAMMA + "/events/keyset"
 BOOKS = CLOB + "/books"
 REWARDS = CLOB + "/rewards/markets/multi"
-UA = {"User-Agent": "releve-lecture-seule/1.0", "Content-Type": "application/json"}
+UA = {"User-Agent": "releve-lecture-seule/1.0", "Content-Type": "application/json", "Accept": "application/json"}
 
 STAT = {"ok": 0, "echecs": 0, "429": 0, "derniere_erreur": ""}
 GAP = [0.25]          # délai minimal entre deux requêtes, tous fils confondus (4 par seconde au plus)
@@ -66,11 +66,17 @@ def http_json(url, data=None, tries=4):
             if e.code == 429:
                 STAT["429"] += 1
                 GAP[0] = min(1.0, GAP[0] * 1.5)
-            STAT["derniere_erreur"] = f"HTTP {e.code} @ {url[:80]}"
-            time.sleep(1.5 * (i + 1))
+            try:
+                body = e.read()[:160].decode("utf-8", "replace")
+            except Exception:
+                body = ""
+            STAT["derniere_erreur"] = f"HTTP {e.code} {body!r} @ {url[:120]}"
+            if i + 1 < tries:
+                time.sleep(1.5 * (i + 1))
         except Exception as e:
-            STAT["derniere_erreur"] = (type(e).__name__ + " " + str(e))[:160] + " @ " + url[:80]
-            time.sleep(1.5 * (i + 1))
+            STAT["derniere_erreur"] = (type(e).__name__ + " " + str(e))[:160] + " @ " + url[:120]
+            if i + 1 < tries:
+                time.sleep(1.5 * (i + 1))
     STAT["echecs"] += 1
     return None
 
@@ -83,54 +89,122 @@ def num(x, d=0.0):
 
 
 # ---------------------------------------------------------------- univers (piste 2)
-def list_universe(samples, deadline):
-    """Événements ouverts « negative risk » d'au moins 1 000 $ de volume, avec leurs issues non closes."""
-    evs, cur, pages, n_events, partial = {}, None, 0, 0, False
-    while pages < 800:
-        if time.time() > deadline:
-            partial = True
-            break
-        url = f"{EVENTS}?closed=false&limit=100&volume_min=1000" + ("&after_cursor=" + urllib.parse.quote(cur) if cur else "")
-        j = http_json(url)
-        if not j:
-            partial = True
-            break
-        pages += 1
-        for e in j.get("events") or []:
-            n_events += 1
-            if not e.get("negRisk"):
-                continue
-            if "evenement" not in samples:
-                samples["evenement"] = {k: v for k, v in e.items() if k != "markets"}
-                samples["evenement_marche"] = (e.get("markets") or [{}])[0]
-            legs, n_closed, inc = [], 0, False
-            for m in e.get("markets") or []:
-                if m.get("closed"):
-                    n_closed += 1
+# Façons de lister les événements ouverts, essayées dans l'ordre ; la première qui répond est gardée.
+# (nom, adresse, clé de la liste dans la réponse, pagination)
+LISTINGS = [
+    ("evenements_curseur_volume", GAMMA + "/events/keyset?closed=false&limit=100&volume_min=1000", "events", "after_cursor"),
+    ("evenements_curseur", GAMMA + "/events/keyset?closed=false&limit=100", "events", "after_cursor"),
+    ("evenements_curseur_20", GAMMA + "/events/keyset?closed=false&limit=20", "events", "after_cursor"),
+    ("evenements_decalage", GAMMA + "/events?closed=false&limit=100", None, "offset"),
+    ("marches_curseur", GAMMA + "/markets/keyset?closed=false&limit=100", "markets", "after_cursor"),
+]
+
+
+def leg_of(m, ev_slug):
+    """Issue négociable d'un événement, ou None si elle ne l'est pas."""
+    try:
+        tk = json.loads(m.get("clobTokenIds") or "[]")
+    except Exception:
+        tk = []
+    if not (len(tk) == 2 and m.get("enableOrderBook") and m.get("acceptingOrders") is not False and m.get("active") is not False):
+        return None
+    meta = {"ft": m.get("feeType") or "", "q": m.get("question") or "", "gst": tms(m.get("gameStartTime")),
+            "smt": m.get("sportsMarketType") or "", "sl": m.get("slug") or "", "ev": ev_slug or ""}
+    cat, _, fee, _ = category(meta)
+    if m.get("feesEnabled") is False:
+        fee = 0.0
+    return {"id": m.get("id"), "tk": tk[0], "fee": fee, "cat": cat, "ft": meta["ft"],
+            "o": bool(m.get("negRiskOther")), "g": (m.get("groupItemTitle") or "")[:40]}
+
+
+def list_universe(samples, deadline, skip):
+    """Événements ouverts « negative risk » d'au moins 1 000 $ de volume, avec leurs issues non closes.
+
+    skip : variantes déjà essayées sans succès (refusées, ou sans aucun événement utile), à ne pas refaire.
+    """
+    essais = []
+    for name, base, key, paging in LISTINGS:
+        if name in skip:
+            continue
+        evs, groups, cur, off, pages, n_items, partial, started = {}, {}, None, 0, 0, 0, False, False
+        while pages < 1500:
+            if time.time() > deadline:
+                partial = True
+                break
+            url = base + ("&after_cursor=" + urllib.parse.quote(cur) if cur else "") + (f"&offset={off}" if paging == "offset" and off else "")
+            j = http_json(url, tries=4 if started else 1)
+            items = (j.get(key) if isinstance(j, dict) else None) if key else (j if isinstance(j, list) else None)
+            if items is None:
+                partial = True
+                break
+            started = True
+            pages += 1
+            for it in items:
+                n_items += 1
+                if key == "markets":
+                    # repli : les marchés un par un, regroupés par événement
+                    if not it.get("negRisk") or it.get("closed"):
+                        continue
+                    e0 = (it.get("events") or [{}])[0]
+                    gid = str(it.get("negRiskMarketID") or e0.get("id") or "")
+                    if not gid:
+                        continue
+                    if "evenement_marche" not in samples:
+                        samples["evenement_marche"] = it
+                    g = groups.setdefault(gid, {"id": gid, "sl": e0.get("slug") or "", "ti": (e0.get("title") or "")[:100],
+                                                "end": tms(e0.get("endDate") or it.get("endDate")), "aug": e0.get("negRiskAugmented"),
+                                                "inc": False, "clos": 0, "legs": []})
+                    leg = leg_of(it, g["sl"])
+                    if leg is None:
+                        g["inc"] = True
+                    else:
+                        g["legs"].append(leg)
                     continue
-                try:
-                    tk = json.loads(m.get("clobTokenIds") or "[]")
-                except Exception:
-                    tk = []
-                ok = len(tk) == 2 and m.get("enableOrderBook") and m.get("acceptingOrders") is not False and m.get("active") is not False
-                if not ok:
-                    inc = True      # une issue non négociable : le panier Oui ne peut pas être complet
+                e = it
+                if "premier_evenement_cles" not in samples:
+                    samples["premier_evenement_cles"] = sorted(e.keys())
+                if not e.get("negRisk"):
                     continue
-                meta = {"ft": m.get("feeType") or "", "q": m.get("question") or "", "gst": tms(m.get("gameStartTime")),
-                        "smt": m.get("sportsMarketType") or "", "sl": m.get("slug") or "", "ev": e.get("slug") or ""}
-                cat, _, fee, _ = category(meta)
-                if m.get("feesEnabled") is False:
-                    fee = 0.0
-                legs.append({"id": m.get("id"), "tk": tk[0], "fee": fee, "cat": cat, "ft": meta["ft"],
-                             "o": bool(m.get("negRiskOther")), "g": (m.get("groupItemTitle") or "")[:40]})
-            if len(legs) >= 2:
-                evs[str(e.get("id"))] = {"id": str(e.get("id")), "sl": e.get("slug") or "", "ti": (e.get("title") or "")[:100],
-                                         "end": tms(e.get("endDate")), "aug": e.get("negRiskAugmented"), "inc": inc,
-                                         "clos": n_closed, "legs": legs}
-        cur = j.get("next_cursor")
-        if not cur:
-            break
-    return evs, {"pages": pages, "evenements_lus": n_events, "negrisk": len(evs), "partiel": partial}
+                if e.get("volume") is not None and num(e.get("volume")) < 1000:
+                    continue
+                if "evenement" not in samples:
+                    samples["evenement"] = {k: v for k, v in e.items() if k != "markets"}
+                    samples["evenement_marche"] = (e.get("markets") or [{}])[0]
+                legs, n_closed, inc = [], 0, False
+                for m in e.get("markets") or []:
+                    if m.get("closed"):
+                        n_closed += 1
+                        continue
+                    leg = leg_of(m, e.get("slug"))
+                    if leg is None:
+                        inc = True      # une issue non négociable : le panier Oui ne peut pas être complet
+                    else:
+                        legs.append(leg)
+                if len(legs) >= 2:
+                    evs[str(e.get("id"))] = {"id": str(e.get("id")), "sl": e.get("slug") or "", "ti": (e.get("title") or "")[:100],
+                                             "end": tms(e.get("endDate")), "aug": e.get("negRiskAugmented"), "inc": inc,
+                                             "clos": n_closed, "legs": legs}
+            if paging == "offset":
+                off += len(items)
+                if len(items) < 100:
+                    break
+            else:
+                cur = j.get("next_cursor")
+                if not cur:
+                    break
+        if key == "markets":
+            for g in groups.values():
+                if partial:
+                    g["inc"] = True     # liste incomplète : on ne peut pas affirmer qu'un panier Oui est complet
+                if len(g["legs"]) >= 2:
+                    evs[g["id"]] = g
+        essais.append({"variante": name, "pages": pages, "lus": n_items, "negrisk": len(evs), "partiel": partial,
+                       "erreur": "" if started else STAT["derniere_erreur"]})
+        if evs:
+            return evs, {"variante": name, "pages": pages, "evenements_lus": n_items, "negrisk": len(evs), "partiel": partial, "essais": essais}
+        if not started or n_items >= 300:
+            skip.add(name)
+    return {}, {"variante": None, "pages": 0, "evenements_lus": 0, "negrisk": 0, "partiel": True, "essais": essais}
 
 
 def fetch_books(tokens=None, groups=None):
@@ -384,13 +458,27 @@ def main():
             evs, uni_t = c["evs"], c["t"]
     except Exception:
         pass
-    if not evs:
-        evs, info["univers"] = list_universe(samples, time.time() + min(420, max(60, left() - 300)))
-        uni_t = time.time()
+    skip_path = a.cache + ".skip"
+    try:
+        skip = set(json.load(open(skip_path)))
+    except Exception:
+        skip = set()
+
+    def listing(seconds):
+        out = list_universe(samples, time.time() + seconds, skip)
         try:
-            json.dump({"t": uni_t, "evs": evs}, open(a.cache, "w"))
+            json.dump(sorted(skip), open(skip_path, "w"))
         except Exception:
             pass
+        return out
+    if not evs:
+        evs, info["univers"] = listing(min(420, max(60, left() - 300)))
+        uni_t = time.time()
+        if evs:
+            try:
+                json.dump({"t": uni_t, "evs": evs}, open(a.cache, "w"))
+            except Exception:
+                pass
     ev_meta = os.path.join(a.dir, "evenements.jsonl")
     known_ev = set()
     if os.path.exists(ev_meta):
@@ -418,12 +506,20 @@ def main():
                 known_rec.add(json.loads(line)["c"])
             except Exception:
                 pass
-    last, last_rec, n_cycles, n_lines, n_rec = {}, 0.0, 0, 0, 0
+    # Un relevé des récompenses pèse 0,6 Mo compressé et la concurrence bouge lentement :
+    # un toutes les 3 h au plus, l'heure du dernier étant gardée d'une tranche à l'autre.
+    rec_every = max(a.rec_min, 180) * 60
+    rec_stamp = a.cache + ".rec"
+    try:
+        last_rec = float(open(rec_stamp).read())
+    except Exception:
+        last_rec = 0.0
+    last, n_cycles, n_lines, n_rec = {}, 0, 0, 0
     tot = {"candidats": 0, "disparus": 0, "y_brut": 0, "y_net": 0, "n_brut": 0, "n_net": 0}
     while left() > 45:
         c0 = time.time()
         try:
-            if c0 - last_rec > a.rec_min * 60 and left() > 150:
+            if c0 - last_rec > rec_every and left() > 150:
                 with open(rec_meta, "a") as mf:
                     rows, info["recompenses"] = rewards_snapshot(samples, known_rec, mf)
                 with open(rec_path, "a") as f:
@@ -431,6 +527,10 @@ def main():
                         f.write(json.dumps(r) + "\n")
                 n_rec += len(rows)
                 last_rec = time.time()
+                try:
+                    open(rec_stamp, "w").write(str(last_rec))
+                except Exception:
+                    pass
             if evs:
                 out = []
                 c = sweep(evs, last, out)
@@ -442,10 +542,11 @@ def main():
                 for k in tot:
                     tot[k] += c[k]
                 info["dernier_cycle"] = c
-            if time.time() - uni_t > a.univers_min * 60 and left() > 400:
-                new, info["univers"] = list_universe(samples, time.time() + min(300, left() - 100))
-                if new and not info["univers"]["partiel"]:
-                    evs, uni_t = new, time.time()
+            if time.time() - uni_t > (600 if not evs else a.univers_min * 60) and left() > 400:
+                new, info["univers"] = listing(min(300, left() - 100))
+                uni_t = time.time()
+                if new and (not evs or not info["univers"]["partiel"]):
+                    evs = new
                     note_events()
                     try:
                         json.dump({"t": uni_t, "evs": evs}, open(a.cache, "w"))
