@@ -122,5 +122,40 @@ def main():
     print(json.dumps(etat, ensure_ascii=False))
 
 
+def start_pistes():
+    """Lance à côté le relevé des pistes (pistes_live.py), sans lien avec la mesure de file.
+
+    Provisoire : je ne peux pas créer de nouvelle tâche GitHub sans le navigateur, alors ce
+    travail héberge le relevé. Il écrit dans <dir>/pistes_polymarket/, enregistré avec le
+    reste du dossier. Un fichier ARRET dans ce dossier l'empêche de démarrer.
+    """
+    try:
+        import subprocess
+        arg = lambda k, d: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else d
+        until = arg("--until", None)
+        if until and time.time() >= tms(until) / 1000:
+            return None
+        script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pistes_live.py")
+        out = os.path.join(arg("--dir", "file"), "pistes_polymarket")
+        if not os.path.exists(script) or os.path.exists(os.path.join(out, "ARRET")):
+            return None
+        seconds = max(120.0, float(arg("--max-seconds", 3300)) - 150)
+        return subprocess.Popen([sys.executable, script, "--dir", out, "--max-seconds", str(seconds), "--rec-min", "20", "--univers-min", "60"],
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception:
+        return None
+
+
 if __name__ == "__main__":
-    main()
+    child = start_pistes()
+    try:
+        main()
+    finally:
+        if child is not None:
+            try:
+                child.wait(timeout=150)
+            except Exception:
+                try:
+                    child.kill()
+                except Exception:
+                    pass
