@@ -1,0 +1,4 @@
+[
+ ["pistes_live.py", "--dir", "{dir}", "--max-seconds", "{seconds}", "--rec-min", "20", "--univers-min", "60"],
+ ["pistes_markout.py", "--dir", "{dir}", "--max-seconds", "{seconds}"]
+]
