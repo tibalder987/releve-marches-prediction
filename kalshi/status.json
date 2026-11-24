@@ -1,10 +1,13 @@
 {
  "http": {
-  "200": 3905,
-  "404": 549,
-  "429": 152
+  "200": 3824,
+  "429": 147,
+  "404": 567,
+  "URLError": 1
  },
- "erreurs": [],
+ "erreurs": [
+  "URLError /historical/markets/KXLOLMAP-26JUL240700BLGEDG-1-BLG/candlesticks <urlopen error [Errno 104] Connection reset by peer>"
+ ],
  "exemples": {
   "exchange_status": {
    "exchange_active": true,
@@ -48,33 +51,33 @@
    "trades_created_ts": "2026-09-25T00:00:00Z"
   },
   "chandelier": {
-   "end_period_ts": 1786647600,
-   "open_interest": "40828.59",
+   "end_period_ts": 1789750800,
+   "open_interest": "16294.15",
    "price": {
     "close": "0.0100",
-    "high": "0.0100",
+    "high": "0.0800",
     "low": "0.0100",
-    "mean": "0.0100",
-    "open": "0.0100",
-    "previous": "0.0100"
+    "mean": "0.0418",
+    "open": "0.0300",
+    "previous": null
    },
-   "volume": "2250.00",
+   "volume": "21762.64",
    "yes_ask": {
     "close": "0.0100",
-    "high": "0.0500",
+    "high": "0.9900",
     "low": "0.0100",
-    "open": "0.0200"
+    "open": "0.9900"
    },
    "yes_bid": {
     "close": "0.0000",
-    "high": "0.0100",
+    "high": "0.0700",
     "low": "0.0000",
-    "open": "0.0100"
+    "open": "0.0000"
    }
   }
  },
  "phase": "chandeliers",
- "maj": "2026-11-24T10:08:31.542276+00:00",
+ "maj": "2026-11-24T10:28:01.870472+00:00",
  "base": "https://api.elections.kalshi.com/trade-api/v2",
  "jours_faits": 183,
  "jours_total": 183,
@@ -88,6 +91,6 @@
   "max_close": 1779138000,
   "echecs": null
  },
- "traites": 227863,
- "restants": 274821
+ "traites": 231245,
+ "restants": 271439
 }
