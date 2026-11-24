@@ -1,8 +1,8 @@
 {
  "http": {
-  "200": 3841,
-  "404": 552,
-  "429": 149
+  "200": 3846,
+  "404": 538,
+  "429": 151
  },
  "erreurs": [],
  "exemples": {
@@ -48,33 +48,33 @@
    "trades_created_ts": "2026-09-24T00:00:00Z"
   },
   "chandelier": {
-   "end_period_ts": 1794668400,
-   "open_interest_fp": "11189.66",
+   "end_period_ts": 1789387200,
+   "open_interest": "10600.72",
    "price": {
-    "close_dollars": "0.2500",
-    "high_dollars": "0.2500",
-    "low_dollars": "0.1200",
-    "mean_dollars": "0.1812",
-    "open_dollars": "0.1200",
-    "previous_dollars": "0.1200"
+    "close": "0.9900",
+    "high": "0.9900",
+    "low": "0.8900",
+    "mean": "0.9628",
+    "open": "0.9600",
+    "previous": null
    },
-   "volume_fp": "10230.54",
+   "volume": "21477.79",
    "yes_ask": {
-    "close_dollars": "0.2500",
-    "high_dollars": "0.3900",
-    "low_dollars": "0.1200",
-    "open_dollars": "0.1200"
+    "close": "1.0000",
+    "high": "1.0000",
+    "low": "0.9000",
+    "open": "1.0000"
    },
    "yes_bid": {
-    "close_dollars": "0.2400",
-    "high_dollars": "0.2400",
-    "low_dollars": "0.0100",
-    "open_dollars": "0.1100"
+    "close": "0.9900",
+    "high": "0.9900",
+    "low": "0.0100",
+    "open": "0.0100"
    }
   }
  },
  "phase": "chandeliers",
- "maj": "2026-11-24T07:32:04.723299+00:00",
+ "maj": "2026-11-24T07:51:57.222167+00:00",
  "base": "https://api.elections.kalshi.com/trade-api/v2",
  "jours_faits": 183,
  "jours_total": 183,
@@ -88,6 +88,6 @@
   "max_close": 1779138000,
   "echecs": null
  },
- "traites": 200713,
- "restants": 301971
+ "traites": 204128,
+ "restants": 298556
 }
