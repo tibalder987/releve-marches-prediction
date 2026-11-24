@@ -1,5 +1,6 @@
-règlements lus : 0/1995
-153048 observations, 1995 marchés, 1481 réglés
+règlements lus : 0/2220
+règlements lus : 2000/2220
+185994 observations, 2220 marchés, 1660 réglés
 
 Règle F1 football, 2-4 h après le coup d'envoi, milieu 0,990-0,995 : 18 achats
   mise   100 $ : 18 achats, 0 pertes, réussite 100.00 %, perte -0.00-17.59 %, rendement net 0.38 %
@@ -15,8 +16,8 @@ Règle F2 football plus/moins, 2-4 h après le coup d'envoi, milieu 0,990-0,995 
 
 Règle C1 crypto, après la fin prévue, milieu 0,990-0,995 : 0 achats
 
-Règle T0 témoin : tous marchés, toutes fenêtres, milieu 0,990-0,995 : 659 achats
-  mise   100 $ : 650 achats, 6 pertes, réussite 99.08 %, perte 0.42-2.00 %, rendement net -0.60 %
-  mise   500 $ : 650 achats, 6 pertes, réussite 99.08 %, perte 0.42-2.00 %, rendement net -0.87 %
-  mise  1000 $ : 650 achats, 6 pertes, réussite 99.08 %, perte 0.42-2.00 %, rendement net -0.95 %
-  mise  2500 $ : 650 achats, 6 pertes, réussite 99.08 %, perte 0.42-2.00 %, rendement net -1.17 %
+Règle T0 témoin : tous marchés, toutes fenêtres, milieu 0,990-0,995 : 748 achats
+  mise   100 $ : 738 achats, 6 pertes, réussite 99.19 %, perte 0.37-1.76 %, rendement net -0.49 %
+  mise   500 $ : 738 achats, 6 pertes, réussite 99.19 %, perte 0.37-1.76 %, rendement net -0.74 %
+  mise  1000 $ : 738 achats, 6 pertes, réussite 99.19 %, perte 0.37-1.76 %, rendement net -0.83 %
+  mise  2500 $ : 738 achats, 6 pertes, réussite 99.19 %, perte 0.37-1.76 %, rendement net -1.03 %
