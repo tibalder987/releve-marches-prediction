@@ -14,6 +14,9 @@ Piste 2, arbitrage de cohérence
     - la somme des meilleurs acheteurs Oui dépasse 1 (panier Non : k issues Non achetées
       paient au moins k - 1),
   frais de preneur compris, avec la taille exécutable en descendant les carnets.
+  Les frais sont ceux que chaque marché annonce (champ feeSchedule) ; à défaut, ceux de sa catégorie.
+  Univers principal : événements d'au moins 1 000 $ de volume. Toutes les 3 h, un tour d'horizon
+  des autres événements (jamais échangés ou moins de 1 000 $), noté à part (lignes « u »: 1).
 
 Bibliothèque standard uniquement. Les adresses peuvent être remplacées par les variables
 PISTES_GAMMA et PISTES_CLOB (essais locaux).
@@ -22,6 +25,7 @@ import argparse
 import gzip
 import json
 import os
+import random
 import shutil
 import sys
 import threading
@@ -104,6 +108,27 @@ LISTINGS = [
 ]
 
 
+FEE_STAT = {}
+
+
+def fee_of(m, fee_cat):
+    """Frais de preneur d'un marché : (taux, exposant, source).
+
+    Le taux est celui que le marché annonce (feeSchedule.rate) ; à défaut, celui de sa catégorie.
+    """
+    if m.get("feesEnabled") is False:
+        return 0.0, 1.0, "sans"
+    fs = m.get("feeSchedule")
+    if isinstance(fs, str):
+        try:
+            fs = json.loads(fs)
+        except Exception:
+            fs = None
+    if isinstance(fs, dict) and fs.get("rate") is not None:
+        return num(fs.get("rate"), fee_cat), (num(fs.get("exponent"), 1.0) or 1.0), "marche"
+    return fee_cat, 1.0, "categorie"
+
+
 def leg_of(m, ev_slug):
     """Issue négociable d'un événement, ou None si elle ne l'est pas."""
     try:
@@ -114,22 +139,40 @@ def leg_of(m, ev_slug):
         return None
     meta = {"ft": m.get("feeType") or "", "q": m.get("question") or "", "gst": tms(m.get("gameStartTime")),
             "smt": m.get("sportsMarketType") or "", "sl": m.get("slug") or "", "ev": ev_slug or ""}
-    cat, _, fee, _ = category(meta)
-    if m.get("feesEnabled") is False:
-        fee = 0.0
-    return {"id": m.get("id"), "tk": tk[0], "fee": fee, "cat": cat, "ft": meta["ft"],
-            "o": bool(m.get("negRiskOther")), "g": (m.get("groupItemTitle") or "")[:40]}
+    cat, _, fee_cat, _ = category(meta)
+    fee, exp, src = fee_of(m, fee_cat)
+    FEE_STAT[src] = FEE_STAT.get(src, 0) + 1
+    leg = {"id": m.get("id"), "tk": tk[0], "fee": fee, "cat": cat, "ft": meta["ft"],
+           "o": bool(m.get("negRiskOther")), "g": (m.get("groupItemTitle") or "")[:40]}
+    if abs(exp - 1.0) > 1e-9:
+        leg["fx"] = exp
+        FEE_STAT["exposant"] = FEE_STAT.get("exposant", 0) + 1
+    if src == "marche" and abs(fee - fee_cat) > 1e-9:
+        # le taux annoncé par le marché diffère de celui déduit de la catégorie : on le compte
+        FEE_STAT["ecart"] = FEE_STAT.get("ecart", 0) + 1
+        k = f"{meta['ft']}:{fee_cat}->{fee}"
+        d = FEE_STAT.setdefault("ecarts", {})
+        if k in d or len(d) < 12:
+            d[k] = d.get(k, 0) + 1
+    return leg
 
 
-def list_universe(samples, deadline, skip):
-    """Événements ouverts « negative risk » d'au moins 1 000 $ de volume, avec leurs issues non closes.
+VOL_MIN = 1000.0
 
+
+def list_universe(samples, deadline, skip, only=None, large=False):
+    """Événements ouverts « negative risk », avec leurs issues non closes.
+
+    Univers principal (large=False) : volume connu d'au moins 1 000 $.
+    Univers large (large=True) : les autres, jamais échangés (pas de volume) ou moins de 1 000 $.
     skip : variantes déjà essayées sans succès (refusées, ou sans aucun événement utile), à ne pas refaire.
+    only : noms des seules variantes à essayer.
     """
     essais = []
     for name, base, key, paging in LISTINGS:
-        if name in skip:
+        if name in skip or (only and name not in only):
             continue
+        FEE_STAT.clear()
         evs, groups, cur, off, pages, n_items, partial, started = {}, {}, None, 0, 0, 0, False, False
         while pages < 1500:
             if time.time() > deadline:
@@ -169,7 +212,8 @@ def list_universe(samples, deadline, skip):
                     samples["premier_evenement_cles"] = sorted(e.keys())
                 if not e.get("negRisk"):
                     continue
-                if e.get("volume") is not None and num(e.get("volume")) < 1000:
+                vol = e.get("volume")
+                if (vol is not None and num(vol) >= VOL_MIN) == large:
                     continue
                 if "evenement" not in samples:
                     samples["evenement"] = {k: v for k, v in e.items() if k != "markets"}
@@ -187,7 +231,7 @@ def list_universe(samples, deadline, skip):
                 if len(legs) >= 2:
                     evs[str(e.get("id"))] = {"id": str(e.get("id")), "sl": e.get("slug") or "", "ti": (e.get("title") or "")[:100],
                                              "end": tms(e.get("endDate")), "aug": e.get("negRiskAugmented"), "inc": inc,
-                                             "clos": n_closed, "legs": legs}
+                                             "clos": n_closed, "vol": None if vol is None else round(num(vol)), "legs": legs}
             if paging == "offset":
                 off += len(items)
                 if len(items) < 100:
@@ -205,7 +249,8 @@ def list_universe(samples, deadline, skip):
         essais.append({"variante": name, "pages": pages, "lus": n_items, "negrisk": len(evs), "partiel": partial,
                        "erreur": "" if started else STAT["derniere_erreur"]})
         if evs:
-            return evs, {"variante": name, "pages": pages, "evenements_lus": n_items, "negrisk": len(evs), "partiel": partial, "essais": essais}
+            return evs, {"variante": name, "pages": pages, "evenements_lus": n_items, "negrisk": len(evs), "partiel": partial,
+                         "frais": dict(FEE_STAT), "essais": essais}
         if not started or n_items >= 300:
             skip.add(name)
     return {}, {"variante": None, "pages": 0, "evenements_lus": 0, "negrisk": 0, "partiel": True, "essais": essais}
@@ -251,18 +296,20 @@ def basket(ladders, fees, mode):
     """Achète la même quantité de chaque jambe en descendant les carnets.
 
     ladders : par jambe, liste (prix, taille) du moins cher au plus cher.
+    fees : par jambe, (taux, exposant) des frais de preneur.
     mode "Y" : panier Oui, payé 1 ; on s'arrête dès qu'une jambe est épuisée.
     mode "N" : panier Non, k jambes payées k - 1 ; une jambe épuisée est retirée du panier.
     Renvoie (marge nette de la première unité, quantité, gain net total).
     """
-    legs = [{"l": l, "i": 0, "r": l[0][1], "f": f} for l, f in zip(ladders, fees) if l]
+    legs = [{"l": l, "i": 0, "r": l[0][1], "f": f[0], "x": f[1]} for l, f in zip(ladders, fees) if l]
     if mode == "Y" and len(legs) != len(ladders):
         return None, 0.0, 0.0
     edge0, q, gain = None, 0.0, 0.0
     for _ in range(100000):
         if len(legs) < (1 if mode == "Y" else 2):
             break
-        cost = sum(g["l"][g["i"]][0] * (1 + g["f"] * (1 - g["l"][g["i"]][0])) for g in legs)
+        # prix payé + frais de preneur par part : taux x (p x (1 - p)) ^ exposant (exposant 1 dans la grille publiée)
+        cost = sum(p + g["f"] * (p * (1 - p)) ** g["x"] for g in legs for p in (g["l"][g["i"]][0],))
         edge = (1.0 if mode == "Y" else len(legs) - 1.0) - cost
         if edge0 is None:
             edge0 = edge
@@ -294,7 +341,7 @@ def evaluate(e, books, ts):
     bk = [books.get(g["tk"]) for g in e["legs"]]
     if any(b is None for b in bk):
         return None, False, False, 0.0, 0.0
-    fees = [g["fee"] for g in e["legs"]]
+    fees = [(g["fee"], g.get("fx", 1.0)) for g in e["legs"]]
     asks = [b[0] for b in bk]
     bids = [b[1] for b in bk]
     # panier Oui : toutes les issues négociables, et aucune déjà close (l'une d'elles a pu gagner)
@@ -365,6 +412,39 @@ def sweep(evs, last, out):
     c["gy"], c["gn"] = round(c["gy"], 2), round(c["gn"], 2)
     out.append(c)
     return c
+
+
+def wide_tour(samples, seconds, max_tokens=50000):
+    """Un passage sur les événements « negative risk » hors univers principal.
+
+    Renvoie (lignes à écrire, événements qui ont une ligne, résumé). Si l'univers large dépasse max_tokens
+    issues, on en tire une partie au hasard (ordre aléatoire, coupé à la limite) et on note le total.
+    """
+    evs, info = list_universe(samples, time.time() + seconds, set(), only=("evenements_curseur", "evenements_curseur_20"), large=True)
+    n_ev, n_tok = len(evs), sum(len(e["legs"]) for e in evs.values())
+    if n_tok > max_tokens:
+        ids = sorted(evs)
+        random.Random(int(time.time())).shuffle(ids)
+        keep, tot = {}, 0
+        for i in ids:
+            if tot >= max_tokens:
+                break
+            keep[i] = evs[i]
+            tot += len(evs[i]["legs"])
+        evs = keep
+    lines = []
+    if not evs:
+        return lines, {}, {"k": "cycle_large", "t": int(time.time() * 1000), "ev": 0, "ev_total": 0, "variante": info.get("variante"),
+                           "partiel": True, "erreur": STAT["derniere_erreur"]}
+    c = sweep(evs, {}, lines)
+    c.update(k="cycle_large", ev_total=n_ev, tok_total=n_tok, variante=info.get("variante"), partiel=info.get("partiel"),
+             evenements_lus=info.get("evenements_lus"), frais=info.get("frais"))
+    seen = {}
+    for r in lines:
+        if r.get("k") != "cycle_large":
+            r["u"] = 1
+            seen[r["e"]] = evs[r["e"]]
+    return lines, seen, c
 
 
 # ---------------------------------------------------------------- récompenses (piste 1)
@@ -444,7 +524,9 @@ def main():
     ap.add_argument("--cycle", type=float, default=60)
     ap.add_argument("--univers-min", type=float, default=45)
     ap.add_argument("--rec-min", type=float, default=15)
-    ap.add_argument("--cache", default="/tmp/pistes_univers.json")
+    ap.add_argument("--large-min", type=float, default=180)
+    ap.add_argument("--large-reserve", type=float, default=1000)
+    ap.add_argument("--cache", default="/tmp/pistes_univers3.json")
     a = ap.parse_args()
     t_start = time.time()
     left = lambda: a.max_seconds - (time.time() - t_start)
@@ -493,16 +575,27 @@ def main():
             except Exception:
                 pass
 
-    def note_events():
+    def note_events(which=None, large=False):
         with open(ev_meta, "a") as f:
-            for e in evs.values():
+            for e in (evs if which is None else which).values():
                 if e["id"] not in known_ev:
                     known_ev.add(e["id"])
-                    f.write(json.dumps({"id": e["id"], "sl": e["sl"], "ti": e["ti"], "end": e["end"], "aug": e["aug"], "inc": e["inc"],
-                                        "clos": e["clos"], "n": len(e["legs"]), "frais": sorted({g["fee"] for g in e["legs"]}),
-                                        "cat": sorted({g["cat"] for g in e["legs"]}), "autre": any(g["o"] for g in e["legs"])},
-                                       ensure_ascii=False) + "\n")
+                    row = {"id": e["id"], "sl": e["sl"], "ti": e["ti"], "end": e["end"], "aug": e["aug"], "inc": e["inc"],
+                           "clos": e["clos"], "n": len(e["legs"]), "frais": sorted({g["fee"] for g in e["legs"]}),
+                           "cat": sorted({g["cat"] for g in e["legs"]}), "autre": any(g["o"] for g in e["legs"]), "vol": e.get("vol")}
+                    if large:
+                        row["u"] = 1
+                    f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    def note_universe(src):
+        # la liste des événements suivis, pour savoir à tout moment sur quoi portent les balayages
+        u = info.get("univers") or {}
+        with open(arb_path, "a") as f:
+            f.write(json.dumps({"t": int(time.time() * 1000), "k": "univers", "src": src, "variante": u.get("variante"),
+                                "partiel": u.get("partiel"), "ids": sorted(evs)}) + "\n")
     note_events()
+    if evs:
+        note_universe("liste" if "univers" in info else "cache")
     rec_meta = os.path.join(a.dir, "recompenses_meta.jsonl")
     known_rec = set()
     if os.path.exists(rec_meta):
@@ -519,6 +612,12 @@ def main():
         last_rec = float(open(rec_stamp).read())
     except Exception:
         last_rec = 0.0
+    large_every = a.large_min * 60
+    large_stamp = a.cache + ".large"
+    try:
+        last_large = float(open(large_stamp).read())
+    except Exception:
+        last_large = 0.0
     last, n_cycles, n_lines, n_rec = {}, 0, 0, 0
     tot = {"candidats": 0, "disparus": 0, "y_brut": 0, "y_net": 0, "n_brut": 0, "n_net": 0}
     while left() > 45:
@@ -547,12 +646,29 @@ def main():
                 for k in tot:
                     tot[k] += c[k]
                 info["dernier_cycle"] = c
+            if evs and n_cycles >= 1 and time.time() - last_large > large_every and left() > a.large_reserve:
+                # tour d'horizon des événements hors univers principal (jamais échangés ou moins de 1 000 $ de volume)
+                last_large = time.time()
+                try:
+                    open(large_stamp, "w").write(str(last_large))
+                except Exception:
+                    pass
+                lines, seen, cl = wide_tour(samples, min(300, left() - 0.7 * a.large_reserve))
+                note_events(seen, large=True)
+                with open(arb_path, "a") as f:
+                    for r in lines:
+                        f.write(json.dumps(r) + "\n")
+                    if not lines:
+                        f.write(json.dumps(cl) + "\n")
+                n_lines += len(lines)
+                info["large"] = cl
             if time.time() - uni_t > (600 if not evs else a.univers_min * 60) and left() > 400:
                 new, info["univers"] = listing(min(300, left() - 100))
                 uni_t = time.time()
                 if new and (not evs or not info["univers"]["partiel"]):
                     evs = new
                     note_events()
+                    note_universe("liste")
                     try:
                         json.dump({"t": uni_t, "evs": evs}, open(a.cache, "w"))
                     except Exception:
