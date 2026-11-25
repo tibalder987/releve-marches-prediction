@@ -10,7 +10,7 @@ Scripts qui lisent des API publiques. Aucun compte, aucun ordre, aucune clé.
 | `pistes_markout.py` | Une fois par jour : sur un échantillon de marchés récompensés, résultat des ordres posés qui ont été servis, mesuré 5 min, 60 min et en fin de fenêtre après chaque transaction. |
 | `pistes_analyse.py` | Lecture des relevés des pistes : récompenses par dollar posé, solde une fois déduites les pertes sur ordres servis, paniers nets positifs (fréquence, taille, durée). |
 | `kalshi_replay.py` | Rejoue sur Kalshi l'achat de contrats entre 0,98 et 0,999 à partir des chandeliers horaires du meilleur vendeur. |
-| `kalshi_check.py`, `kalshi_check2.py` | Recalcul indépendant des résultats Kalshi à partir de `kalshi/rows.csv`, contrôle du tirage et sensibilité. |
+| `kalshi_check.py`, `kalshi_check2.py`, `kalshi_final.py` | Recalcul indépendant des résultats Kalshi à partir de `kalshi/rows.csv` : contrôle du tirage, sensibilité, puis chiffres du passage complet (toutes strates de volume, cellules, marchés sans chandelier). |
 | `diag.py` | Vérifie que les API répondent. |
 
 ## Sorties
