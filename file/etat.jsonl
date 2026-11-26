@@ -83,3 +83,4 @@
 {"debut": "2026-11-26T12:30:20Z", "fin": "2026-11-26T13:25:20Z", "lignes": 1982, "marches": 136, "http": {"ok": 1556, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-26T13:25:23Z", "fin": "2026-11-26T14:20:23Z", "lignes": 2028, "marches": 136, "http": {"ok": 1553, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-26T14:20:39Z", "fin": "2026-11-26T15:15:39Z", "lignes": 2012, "marches": 136, "http": {"ok": 1575, "echecs": 0, "derniere_erreur": ""}}
+{"debut": "2026-11-26T15:15:42Z", "fin": "2026-11-26T16:10:42Z", "lignes": 1880, "marches": 127, "http": {"ok": 1606, "echecs": 0, "derniere_erreur": ""}}
