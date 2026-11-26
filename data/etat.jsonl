@@ -85,3 +85,4 @@
 {"debut": "2026-11-26T12:38:33.922506+00:00", "fin": "2026-11-26T13:33:50.187124+00:00", "cycles": 105, "observations": 4552, "issues_candidates": 707, "marches_connus": 8857, "http": {"ok": 1188, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-26T13:33:52.789625+00:00", "fin": "2026-11-26T14:29:01.700309+00:00", "cycles": 105, "observations": 4589, "issues_candidates": 630, "marches_connus": 8949, "http": {"ok": 1123, "echecs": 0, "derniere_erreur": ""}}
 {"debut": "2026-11-26T14:29:04.056999+00:00", "fin": "2026-11-26T15:24:17.120533+00:00", "cycles": 105, "observations": 4570, "issues_candidates": 683, "marches_connus": 9029, "http": {"ok": 1120, "echecs": 0, "derniere_erreur": ""}}
+{"debut": "2026-11-26T15:24:19.855597+00:00", "fin": "2026-11-26T16:19:43.767961+00:00", "cycles": 105, "observations": 4763, "issues_candidates": 605, "marches_connus": 9089, "http": {"ok": 1212, "echecs": 0, "derniere_erreur": ""}}
