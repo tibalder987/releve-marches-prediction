@@ -1,26 +1,26 @@
-règlements lus : 0/8850
-règlements lus : 2000/8850
-règlements lus : 4000/8850
-règlements lus : 6000/8850
-règlements lus : 8000/8850
-605272 observations, 8850 marchés, 8273 réglés
+règlements lus : 0/9333
+règlements lus : 2000/9333
+règlements lus : 4000/9333
+règlements lus : 6000/9333
+règlements lus : 8000/9333
+635076 observations, 9333 marchés, 8806 réglés
 
-Règle F1 football, 2-4 h après le coup d'envoi, milieu 0,990-0,995 : 64 achats
-  mise   100 $ : 64 achats, 0 pertes, réussite 100.00 %, perte 0.00-5.66 %, rendement net 0.30 %
-  mise   500 $ : 64 achats, 0 pertes, réussite 100.00 %, perte 0.00-5.66 %, rendement net 0.27 %
-  mise  1000 $ : 64 achats, 0 pertes, réussite 100.00 %, perte 0.00-5.66 %, rendement net 0.26 %
-  mise  2500 $ : 64 achats, 0 pertes, réussite 100.00 %, perte 0.00-5.66 %, rendement net 0.27 %
+Règle F1 football, 2-4 h après le coup d'envoi, milieu 0,990-0,995 : 73 achats
+  mise   100 $ : 73 achats, 0 pertes, réussite 100.00 %, perte -0.00-5.00 %, rendement net 0.30 %
+  mise   500 $ : 73 achats, 0 pertes, réussite 100.00 %, perte -0.00-5.00 %, rendement net 0.28 %
+  mise  1000 $ : 73 achats, 0 pertes, réussite 100.00 %, perte -0.00-5.00 %, rendement net 0.28 %
+  mise  2500 $ : 73 achats, 0 pertes, réussite 100.00 %, perte -0.00-5.00 %, rendement net 0.28 %
 
-Règle F2 football plus/moins, 2-4 h après le coup d'envoi, milieu 0,990-0,995 : 18 achats
-  mise   100 $ : 18 achats, 0 pertes, réussite 100.00 %, perte -0.00-17.59 %, rendement net 0.28 %
-  mise   500 $ : 18 achats, 0 pertes, réussite 100.00 %, perte -0.00-17.59 %, rendement net 0.23 %
-  mise  1000 $ : 18 achats, 0 pertes, réussite 100.00 %, perte -0.00-17.59 %, rendement net 0.23 %
-  mise  2500 $ : 18 achats, 0 pertes, réussite 100.00 %, perte -0.00-17.59 %, rendement net 0.21 %
+Règle F2 football plus/moins, 2-4 h après le coup d'envoi, milieu 0,990-0,995 : 22 achats
+  mise   100 $ : 22 achats, 0 pertes, réussite 100.00 %, perte 0.00-14.87 %, rendement net 0.28 %
+  mise   500 $ : 22 achats, 0 pertes, réussite 100.00 %, perte 0.00-14.87 %, rendement net 0.25 %
+  mise  1000 $ : 22 achats, 0 pertes, réussite 100.00 %, perte 0.00-14.87 %, rendement net 0.26 %
+  mise  2500 $ : 22 achats, 0 pertes, réussite 100.00 %, perte 0.00-14.87 %, rendement net 0.23 %
 
 Règle C1 crypto, après la fin prévue, milieu 0,990-0,995 : 0 achats
 
-Règle T0 témoin : tous marchés, toutes fenêtres, milieu 0,990-0,995 : 3692 achats
-  mise   100 $ : 3656 achats, 25 pertes, réussite 99.32 %, perte 0.46-1.01 %, rendement net -0.39 %
-  mise   500 $ : 3656 achats, 25 pertes, réussite 99.32 %, perte 0.46-1.01 %, rendement net -0.44 %
-  mise  1000 $ : 3656 achats, 25 pertes, réussite 99.32 %, perte 0.46-1.01 %, rendement net -0.54 %
-  mise  2500 $ : 3656 achats, 25 pertes, réussite 99.32 %, perte 0.46-1.01 %, rendement net -0.70 %
+Règle T0 témoin : tous marchés, toutes fenêtres, milieu 0,990-0,995 : 3917 achats
+  mise   100 $ : 3880 achats, 28 pertes, réussite 99.28 %, perte 0.50-1.04 %, rendement net -0.42 %
+  mise   500 $ : 3880 achats, 28 pertes, réussite 99.28 %, perte 0.50-1.04 %, rendement net -0.48 %
+  mise  1000 $ : 3880 achats, 28 pertes, réussite 99.28 %, perte 0.50-1.04 %, rendement net -0.59 %
+  mise  2500 $ : 3880 achats, 28 pertes, réussite 99.28 %, perte 0.50-1.04 %, rendement net -0.72 %
